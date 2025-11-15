@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CornerDownLeft, Loader2 } from 'lucide-react';
+import { Paperclip, Mic, ImageUp, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -57,7 +57,7 @@ export function TextChatInterface() {
   };
 
   return (
-    <div className="flex h-full flex-col max-h-[80vh] md:max-h-full">
+    <div className="flex h-full flex-col max-h-[100vh] md:max-h-full">
       <ScrollArea className="flex-1 p-4">
         <div className="space-y-4">
           {messages.map((message, index) => (
@@ -78,7 +78,7 @@ export function TextChatInterface() {
                   'max-w-xs rounded-lg p-3 text-sm md:max-w-md lg:max-w-lg',
                   message.role === 'user'
                     ? 'bg-secondary text-secondary-foreground'
-                    : 'border border-primary/20 bg-background'
+                    : 'border border-primary/20 bg-card'
                 )}
               >
                 <p className="font-body">{message.content}</p>
@@ -103,21 +103,42 @@ export function TextChatInterface() {
         </div>
       </ScrollArea>
       <div className="border-t border-primary/10 bg-transparent p-4">
-        <form onSubmit={handleSendMessage} className="relative">
+        <form onSubmit={handleSendMessage} className="relative flex items-center gap-2">
+          <Button
+            type="button"
+            size="icon"
+            variant="ghost"
+            className="text-muted-foreground hover:text-foreground"
+            disabled={isLoading}
+            aria-label="Upload Image"
+          >
+            <ImageUp className="h-5 w-5" />
+          </Button>
+           <Button
+            type="button"
+            size="icon"
+            variant="ghost"
+            className="text-muted-foreground hover:text-foreground"
+            disabled={isLoading}
+            aria-label="Use Microphone"
+          >
+            <Mic className="h-5 w-5" />
+          </Button>
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask a question..."
-            className="pr-12 bg-background/50 border-primary/20 focus:ring-accent"
+            className="flex-1 pr-12 bg-background/50 border-primary/20 focus:ring-accent"
             disabled={isLoading}
           />
           <Button
             type="submit"
             size="icon"
             className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 bg-accent text-accent-foreground hover:bg-accent/90"
-            disabled={isLoading}
+            disabled={isLoading || !input.trim()}
+            aria-label="Send Message"
           >
-            <CornerDownLeft className="h-4 w-4" />
+            <Paperclip className="h-4 w-4" />
           </Button>
         </form>
       </div>

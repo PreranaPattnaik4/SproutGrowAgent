@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageSquarePlus } from 'lucide-react';
+import { Leaf, MessageSquarePlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -25,11 +25,12 @@ export function ChatbotPopup() {
           <MessageSquarePlus className="h-8 w-8" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="h-[90vh] max-h-[700px] w-[95vw] max-w-[450px] rounded-lg border-primary/20 bg-background/90 p-0 shadow-2xl backdrop-blur-md sm:h-[80vh]">
+      <DialogContent className="h-screen w-screen max-w-full max-h-full rounded-none border-0 bg-background/80 p-0 shadow-2xl backdrop-blur-xl">
         <div className="flex h-full flex-col">
-          <DialogHeader className="border-b border-border/50 p-4">
-            <DialogTitle className="font-headline text-foreground">
-              {t.titleTextChat}
+          <DialogHeader className="flex flex-row items-center space-x-4 border-b border-border/50 p-4">
+            <Leaf className="h-8 w-8 text-primary" />
+            <DialogTitle className="font-headline text-2xl text-foreground">
+              {t.appName}
             </DialogTitle>
           </DialogHeader>
           <div className="flex-1 overflow-hidden">
