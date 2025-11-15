@@ -6,6 +6,7 @@ export type Translation = {
   navTextChat: string;
   navLocationInfo: string;
   navDigitalSolutions: string;
+  navAboutUs: string;
   navLanguage: string;
   // Page Titles
   titleHome: string;
@@ -40,6 +41,7 @@ export const translations: { [key: string]: Translation } = {
     navTextChat: 'Text Chat',
     navLocationInfo: 'Location Info',
     navDigitalSolutions: 'Digital Solutions',
+    navAboutUs: 'About Us',
     navLanguage: 'Language',
     titleHome: 'Dashboard',
     titleImageDiagnosis: 'Plant Disease Diagnosis',
