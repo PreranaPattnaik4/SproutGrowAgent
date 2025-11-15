@@ -35,6 +35,30 @@ export default function Home() {
     },
   ];
 
+  const features = [
+    {
+      title: 'Image Diagnosis',
+      description: 'Snap a photo of a plant leaf and get an instant AI-powered disease diagnosis and treatment advice.',
+      icon: ImageIcon,
+      href: '/image-diagnosis',
+      cta: 'Diagnose Crop',
+    },
+    {
+      title: 'Voice Assistant',
+      description: 'Use your voice to ask for farming advice, get weather updates, and receive real-time market information, hands-free.',
+      icon: Mic,
+      href: '/voice-assistant',
+      cta: 'Ask a Question',
+    },
+    {
+      title: 'AI Text Chat',
+      description: 'Prefer to type? Our AI chatbot is available 24/7 to help you with your farming questions and concerns.',
+      icon: MessageSquare,
+      href: '/text-chat',
+      cta: 'Start Chatting',
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-background text-foreground">
       <main className='flex-1'>
@@ -72,90 +96,39 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
-        {/* Image Diagnosis Section */}
-        <section className="bg-muted/50 py-16">
-          <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
-            <div className="relative mx-auto h-80 w-full max-w-md">
-              <Image
-                src="https://images.unsplash.com/photo-1599591416954-94025c8651c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwcmVjaXNpb24lMjBmYXJtaW5nJTIwYWl8ZW58MHx8fHwxNzYzMTk4MTM3fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="A high-tech agricultural drone spraying crops in a lush green field, symbolizing AI in farming."
-                layout="fill"
-                className="rounded-lg object-cover shadow-lg"
-                data-ai-hint="precision farming AI"
-              />
-            </div>
-            <div className="space-y-4 text-center md:text-left">
-              <h2 className="font-headline text-3xl font-bold text-foreground">
-                Image Diagnosis
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Is your crop showing signs of disease? Just snap a picture of a leaf, and our AI will analyze it to provide an instant diagnosis and suggest treatment options.
-              </p>
-              <Link href="/image-diagnosis" passHref>
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <ImageIcon className="mr-2 h-5 w-5" />
-                  Diagnose My Crop
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* Voice Assistant Section */}
-        <section className="bg-background py-16">
-          <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
-            <div className="space-y-4 text-center md:text-left md:order-last">
-              <h2 className="font-headline text-3xl font-bold text-foreground">
-                Voice Assistant
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Get hands-free help in the field. Ask questions about weather, market prices, or farming techniques, and get instant answers from our AI assistant.
-              </p>
-              <Link href="/voice-assistant" passHref>
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Mic className="mr-2 h-5 w-5" />
-                  Ask a Question
-                </Button>
-              </Link>
-            </div>
-            <div className="relative mx-auto h-80 w-full max-w-md md:order-first">
-              <Image
-                src="https://images.unsplash.com/photo-1558221639-e4834823c913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmYXJtZXIlMjBvbiUyMHBob25lfGVufDB8fHx8MTc2MzE5ODEzN3ww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="A farmer in a field, looking at their smartphone with a thoughtful expression."
-                layout="fill"
-                className="rounded-lg object-cover shadow-lg"
-                data-ai-hint="farmer on phone"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Text Chat Section */}
+        {/* Features Section */}
         <section className="bg-muted/50 py-16">
-          <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
-            <div className="relative mx-auto h-80 w-full max-w-md">
-                <Image
-                    src="https://images.unsplash.com/photo-1516131206008-ddc0626639c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzbWFydCUyMGZhcm1pbmclMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2MzIwMDQ2NHww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="A person's hands holding a smartphone displaying agricultural data and charts over a backdrop of a green field."
-                    layout="fill"
-                    className="rounded-lg object-cover shadow-lg"
-                    data-ai-hint="smart farming technology"
-                />
-            </div>
-            <div className="space-y-4 text-center md:text-left">
-              <h2 className="font-headline text-3xl font-bold text-foreground">
-                AI Text Chat
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="mb-4 font-headline text-3xl font-bold text-foreground">
+                Your Farming Toolkit
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Prefer to type? Our AI-powered text chat is available 24/7 to answer your questions, provide support, and help you manage your farm more effectively.
+              <p className="mb-8 text-lg text-muted-foreground">
+                Everything you need for smarter farming, right at your fingertips.
               </p>
-              <Link href="/text-chat" passHref>
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <MessageSquare className="mr-2 h-5 w-5" />
-                  Start Chatting
-                </Button>
-              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {features.map((feature) => (
+                <Card key={feature.title} className="flex flex-col text-center">
+                  <CardContent className="flex flex-1 flex-col items-center justify-between space-y-4 p-6">
+                     <div className='flex flex-col items-center space-y-4'>
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                          <feature.icon className="h-8 w-8" />
+                        </div>
+                        <CardTitle className="font-headline text-xl font-bold">
+                          {feature.title}
+                        </CardTitle>
+                        <p className="text-muted-foreground">{feature.description}</p>
+                      </div>
+                    <Link href={feature.href} passHref>
+                      <Button className="mt-4 w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                        {feature.cta}
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
