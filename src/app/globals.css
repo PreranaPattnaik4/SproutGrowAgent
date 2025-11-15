@@ -76,38 +76,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .animate-shine {
-    position: relative;
-    overflow: hidden;
-  }
-  .animate-shine::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(255, 255, 255, 0.9),
-      transparent
-    );
-    transform: skewX(-25deg);
-    animation: shine 5s infinite;
-  }
-}
-
-@keyframes shine {
-  0% {
-    left: -150%;
-  }
-  20% {
-    left: 150%;
-  }
-  100% {
-    left: 150%;
-  }
-}
