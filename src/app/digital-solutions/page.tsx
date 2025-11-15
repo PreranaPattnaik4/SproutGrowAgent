@@ -14,49 +14,58 @@ import {
   ShieldCheck,
   Landmark,
 } from 'lucide-react';
+import { CropPlanner } from '@/components/features/crop-planner';
 
 const digitalSolutions = [
   {
     title: 'Soil Testing',
     icon: FlaskConical,
     description: 'Get detailed analysis of your soil health.',
+    component: null,
   },
   {
     title: 'Farm Tagging',
     icon: Tags,
     description: 'Digitally map and manage your farm plots.',
+    component: null,
   },
   {
     title: 'Crop Planner',
     icon: CalendarDays,
     description: 'Plan your crops efficiently with personalized recommendations.',
+    component: <CropPlanner />,
   },
   {
     title: 'Weather Alerts',
     icon: CloudSun,
     description: 'Receive timely weather forecasts and alerts specific to your farm.',
+    component: null,
   },
   {
     title: 'Access to Quality Input',
     icon: Package,
     description: 'Find reliable sources for seeds, fertilizers, and other farm inputs.',
+    component: null,
   },
   {
     title: 'Connect with Experts',
     icon: Users,
     description: 'Get advice from agricultural specialists and researchers.',
+    component: null,
   },
   {
     title: 'Crop Insurance',
     icon: ShieldCheck,
     description:
       'Easy to avail and accessible policies at low-cost premium, provides a safety net for farmers in case of crop damage caused by natural calamities.',
+    component: null,
   },
   {
     title: 'Mandi rate and Market Linkage (Sell Produces)',
     icon: Landmark,
     description:
       'Access real-time Mandi rates and connect directly with buyers to sell your produce efficiently.',
+    component: null,
   },
 ];
 
@@ -77,8 +86,8 @@ export default function DigitalSolutionsPage() {
                     <span>{solution.title}</span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="p-6 pt-0 text-base text-muted-foreground">
-                  {solution.description}
+                <AccordionContent className="p-6 pt-0 text-base">
+                  {solution.component ? solution.component : <p className='text-muted-foreground'>{solution.description}</p>}
                 </AccordionContent>
               </AccordionItem>
             ))}
