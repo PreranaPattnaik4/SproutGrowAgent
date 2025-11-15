@@ -4,35 +4,35 @@
 
 @layer base {
   :root {
-    --background: 140 20% 97%; /* Off-White (#F7F9F4), user requested #F2F7F5, this is close */
+    --background: 140 20% 97%; /* Off-White (#F7F9F4), user requested #F2F7F5 */
     --foreground: 152 15% 20%; /* Dark Forest Green for text */
     --card: 140 20% 97%;
     --card-foreground: 152 15% 20%;
     --popover: 140 20% 97%;
     --popover-foreground: 152 15% 20%;
-    --primary: 152 15% 26%; /* Dark Forest Green (#344E41) */
-    --primary-foreground: 49 93% 90%; /* Lighter Sun Yellow for text on dark green */
+    --primary: 152 22% 25%; /* Dark Forest Green (#344E41) */
+    --primary-foreground: 48 93% 90%; /* Lighter Sun Yellow for text on dark green */
     --secondary: 80 20% 64%; /* Muted Sage Green (#A3B18A) */
     --secondary-foreground: 152 15% 20%;
     --muted: 80 20% 88%; /* Lighter Sage for backgrounds */
     --muted-foreground: 152 15% 35%;
-    --accent: 49 95% 62%; /* Sun Yellow (#F9D342) */
+    --accent: 48 94% 62%; /* Sun Yellow (#F9D342) */
     --accent-foreground: 152 15% 20%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 80 20% 80%;
     --input: 80 20% 88%;
-    --ring: 49 95% 62%;
+    --ring: 48 94% 62%;
 
     /* Custom sidebar colors */
-    --sidebar-background: 152 15% 26%; /* Dark Forest Green */
+    --sidebar-background: 152 22% 25%; /* Dark Forest Green */
     --sidebar-foreground: 140 20% 97%; /* Off-White */
-    --sidebar-primary: 49 95% 62%; /* Sun Yellow */
+    --sidebar-primary: 48 94% 62%; /* Sun Yellow */
     --sidebar-primary-foreground: 152 15% 20%;
     --sidebar-accent: 152 15% 35%;
     --sidebar-accent-foreground: 140 20% 97%;
     --sidebar-border: 152 15% 30%;
-    --sidebar-ring: 49 95% 62%;
+    --sidebar-ring: 48 94% 62%;
   }
 
   .dark {
@@ -43,28 +43,28 @@
     --card-foreground: 140 20% 92%;
     --popover: 152 15% 10%;
     --popover-foreground: 140 20% 92%;
-    --primary: 49 95% 62%;
+    --primary: 48 94% 62%;
     --primary-foreground: 152 15% 20%;
     --secondary: 80 15% 30%;
     --secondary-foreground: 140 20% 92%;
     --muted: 80 15% 20%;
     --muted-foreground: 140 20% 70%;
-    --accent: 49 95% 62%;
+    --accent: 48 94% 62%;
     --accent-foreground: 152 15% 20%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 80 15% 25%;
     --input: 80 15% 25%;
-    --ring: 49 95% 62%;
+    --ring: 48 94% 62%;
 
     --sidebar-background: 152 15% 12%;
     --sidebar-foreground: 140 20% 92%;
-    --sidebar-primary: 49 95% 62%;
+    --sidebar-primary: 48 94% 62%;
     --sidebar-primary-foreground: 152 15% 20%;
     --sidebar-accent: 152 15% 20%;
     --sidebar-accent-foreground: 140 20% 97%;
     --sidebar-border: 152 15% 15%;
-    --sidebar-ring: 49 95% 62%;
+    --sidebar-ring: 48 94% 62%;
   }
 }
 
