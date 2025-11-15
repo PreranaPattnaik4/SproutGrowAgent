@@ -9,7 +9,7 @@ import {
   MapPin,
   ChevronRight,
 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
@@ -109,19 +109,23 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        
         {/* Features Section */}
         <section className="bg-secondary/20 py-12">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <h2 className="mb-8 text-center font-headline text-3xl font-bold text-primary">
+              Your Farming Toolkit
+            </h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => (
                 <Link key={feature.href} href={feature.href} passHref>
                   <Card className="flex h-full transform flex-col items-center justify-center bg-accent text-accent-foreground shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
                     <CardContent className="flex flex-col items-center justify-center p-6 text-center">
                       <feature.icon className="mb-4 h-12 w-12" />
-                      <h3 className="text-xl font-bold font-headline">
+                      <h3 className="font-headline text-xl font-bold">
                         {feature.title}
                       </h3>
+                      <p className="mt-2 text-sm text-accent-foreground/80">{feature.description}</p>
                     </CardContent>
                   </Card>
                 </Link>
