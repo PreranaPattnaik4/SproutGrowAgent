@@ -61,9 +61,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex h-full flex-col bg-background text-foreground">
+    <div className="flex flex-col bg-background text-foreground">
       <Header title="Dashboard" />
-      <main className="flex-1 overflow-y-auto">
+      <main>
         {/* Hero Section */}
         <section className="relative bg-background px-4 pb-16 pt-8 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 md:grid-cols-2">
