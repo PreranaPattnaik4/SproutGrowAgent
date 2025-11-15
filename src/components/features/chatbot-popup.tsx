@@ -28,10 +28,10 @@ export function ChatbotPopup() {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-full max-w-none border-0 bg-background/20 p-0 shadow-2xl backdrop-blur-xl sm:max-w-none md:w-1/2"
+        className="w-full max-w-none border-0 bg-card/80 p-0 backdrop-blur-xl sm:max-w-none md:w-1/2"
       >
         <div className="flex h-full flex-col">
-          <SheetHeader className="flex flex-row items-center justify-between space-x-4 border-b border-border/50 p-4">
+          <SheetHeader className="flex flex-row items-center justify-between space-x-4 border-b p-4">
             <div className="flex items-center gap-2">
               <span className="font-headline text-xl font-bold tracking-tight text-foreground">
                 <span style={{ color: '#8ca89b' }}>Sprout</span>
