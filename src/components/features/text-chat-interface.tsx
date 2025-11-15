@@ -69,7 +69,7 @@ export function TextChatInterface() {
               )}
             >
               {message.role === 'assistant' && (
-                <Avatar className="h-8 w-8">
+                <Avatar className="h-8 w-8 bg-primary text-primary-foreground">
                   <AvatarFallback>AI</AvatarFallback>
                 </Avatar>
               )}
@@ -77,8 +77,8 @@ export function TextChatInterface() {
                 className={cn(
                   'max-w-xs rounded-lg p-3 text-sm md:max-w-md lg:max-w-lg',
                   message.role === 'user'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted'
+                    ? 'bg-secondary text-secondary-foreground'
+                    : 'border border-primary/20 bg-background'
                 )}
               >
                 <p className="font-body">{message.content}</p>
@@ -92,7 +92,7 @@ export function TextChatInterface() {
           ))}
           {isLoading && (
             <div className="flex items-start justify-start gap-3">
-              <Avatar className="h-8 w-8">
+              <Avatar className="h-8 w-8 bg-primary text-primary-foreground">
                 <AvatarFallback>AI</AvatarFallback>
               </Avatar>
               <div className="flex items-center rounded-lg bg-muted p-3 text-sm">
@@ -102,19 +102,19 @@ export function TextChatInterface() {
           )}
         </div>
       </ScrollArea>
-      <div className="border-t bg-background p-4">
+      <div className="border-t border-primary/10 bg-transparent p-4">
         <form onSubmit={handleSendMessage} className="relative">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask a question..."
-            className="pr-12"
+            className="pr-12 bg-background/50 border-primary/20 focus:ring-accent"
             disabled={isLoading}
           />
           <Button
             type="submit"
             size="icon"
-            className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2"
+            className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 bg-accent text-accent-foreground hover:bg-accent/90"
             disabled={isLoading}
           >
             <CornerDownLeft className="h-4 w-4" />

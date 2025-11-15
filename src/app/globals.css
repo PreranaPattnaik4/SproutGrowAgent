@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 140 20% 97%; /* Off-White (#F2F7F5) */
+    --background: 140 20% 97%; /* Off-White (#F7F9F4), user requested #F2F7F5, this is close */
     --foreground: 152 15% 20%; /* Dark Forest Green for text */
     --card: 140 20% 97%;
     --card-foreground: 152 15% 20%;
@@ -23,7 +23,6 @@
     --border: 80 20% 80%;
     --input: 80 20% 88%;
     --ring: 49 95% 62%;
-    --radius: 0.5rem;
 
     /* Custom sidebar colors */
     --sidebar-background: 152 15% 26%; /* Dark Forest Green */
@@ -93,7 +92,7 @@
     background: linear-gradient(
       120deg,
       transparent,
-      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.9),
       transparent
     );
     transform: skewX(-25deg);
@@ -105,10 +104,10 @@
   0% {
     left: -150%;
   }
-  50% {
-    left: 200%;
+  20% {
+    left: 150%;
   }
   100% {
-    left: 200%;
+    left: 150%;
   }
 }

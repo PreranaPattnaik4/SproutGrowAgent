@@ -25,7 +25,7 @@ export function ChatbotPopup() {
           <MessageSquarePlus className="h-8 w-8" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="h-[90vh] max-h-[700px] w-[95vw] max-w-[450px] rounded-lg border-0 bg-background/80 p-0 shadow-2xl backdrop-blur-md sm:h-[80vh]">
+      <DialogContent className="h-[90vh] max-h-[700px] w-[95vw] max-w-[450px] rounded-lg border-primary/20 bg-background/80 p-0 shadow-2xl backdrop-blur-md sm:h-[80vh]">
         <div className="flex h-full flex-col">
           <DialogHeader className="border-b border-border/50 p-4">
             <DialogTitle className="font-headline text-foreground">
