@@ -23,6 +23,7 @@ import {
   SheetClose,
 } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
+import { AuthDialog } from '../features/auth-dialog';
 
 export function Header() {
   const pathname = usePathname();
@@ -119,12 +120,15 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+             <AuthDialog />
           </nav>
         </div>
          <div className="md:hidden flex-1 flex justify-center">
             <Logo />
         </div>
-         <div className="md:hidden" style={{width: '56px'}}></div>
+         <div className="md:hidden" style={{width: '56px'}}>
+          <AuthDialog />
+         </div>
 
       </div>
     </header>
