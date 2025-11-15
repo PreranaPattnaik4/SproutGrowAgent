@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -45,7 +46,7 @@ export function SidebarNav() {
           <span style={{ color: '#4d423d' }}>Grow</span>
         </span>
         <span
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-sm font-bold"
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-xs font-bold"
           style={{ color: '#4d423d' }}
         >
           Agent
