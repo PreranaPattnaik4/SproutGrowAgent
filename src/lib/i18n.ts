@@ -48,7 +48,7 @@ export const translations: { [key: string]: Translation } = {
     titleVoiceAssistant: 'Voice Assistant',
     titleTextChat: 'AI Chat Assistant',
     titleLocationInfo: 'Local Information',
-    appName: 'WanderWise AI',
+    appName: 'SproutGrow Agent',
     homeHeroTitle: 'Your AI Farming Companion',
     homeHeroSubtitle:
       'Instant crop disease diagnosis, voice assistance, and localized market data to empower your farming.',

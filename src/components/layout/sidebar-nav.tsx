@@ -41,14 +41,14 @@ export function SidebarNav() {
     <nav className="flex h-full flex-col border-r border-sidebar-border">
       <div className="flex items-center gap-2 border-b border-sidebar-border px-4 py-6">
         <span className="font-headline text-2xl font-bold tracking-tight text-foreground">
-          <span style={{ color: '#8ca89b' }}>Wander</span>
-          <span style={{ color: '#4d423d' }}>Wise</span>
+          <span style={{ color: '#8ca89b' }}>Sprout</span>
+          <span style={{ color: '#4d423d' }}>Grow</span>
         </span>
         <span
           className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-sm font-bold"
           style={{ color: '#4d423d' }}
         >
-          AI
+          Agent
         </span>
       </div>
       <ul className="flex flex-grow flex-col gap-1 p-2">

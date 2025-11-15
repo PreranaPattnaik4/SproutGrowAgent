@@ -32,14 +32,14 @@ export function ChatbotPopup() {
           <SheetHeader className="flex flex-row items-center space-x-4 border-b border-border/50 p-4">
             <div className="flex items-center gap-2">
               <span className="font-headline text-xl font-bold tracking-tight text-foreground">
-                <span style={{ color: '#8ca89b' }}>Wander</span>
-                <span style={{ color: '#4d423d' }}>Wise</span>
+                <span style={{ color: '#8ca89b' }}>Sprout</span>
+                <span style={{ color: '#4d423d' }}>Grow</span>
               </span>
               <span
                 className="flex h-6 w-6 items-center justify-center rounded-full bg-stone-200 text-xs font-bold"
                 style={{ color: '#4d423d' }}
               >
-                AI
+                Agent
               </span>
             </div>
           </SheetHeader>

@@ -72,14 +72,14 @@ export default function Home() {
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center gap-2 md:justify-start">
                 <span className="font-headline text-2xl font-bold tracking-tight text-foreground">
-                  <span style={{ color: '#8ca89b' }}>Wander</span>
-                  <span style={{ color: '#4d423d' }}>Wise</span>
+                  <span style={{ color: '#8ca89b' }}>Sprout</span>
+                  <span style={{ color: '#4d423d' }}>Grow</span>
                 </span>
                 <span
                   className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-sm font-bold"
                   style={{ color: '#4d423d' }}
                 >
-                  AI
+                  Agent
                 </span>
               </div>
               <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl">
@@ -212,7 +212,7 @@ export default function Home() {
                   className="border-primary/50 text-primary hover:bg-primary/10"
                 >
                   <Info className="mr-2 h-5 w-5" />
-                  About WanderWise AI
+                  About SproutGrow Agent
                 </Button>
               </Link>
             </div>
