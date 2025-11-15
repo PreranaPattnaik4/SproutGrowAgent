@@ -2,8 +2,7 @@ export type Translation = {
   // Navigation
   navHome: string;
   navImageDiagnosis: string;
-  navVoiceAssistant: string;
-  navTextChat: string;
+  navAiAssistant: string;
   navLocationInfo: string;
   navDigitalSolutions: string;
   navAboutUs: string;
@@ -11,8 +10,7 @@ export type Translation = {
   // Page Titles
   titleHome: string;
   titleImageDiagnosis: string;
-  titleVoiceAssistant: string;
-  titleTextChat: string;
+  titleAiAssistant: string;
   titleLocationInfo: string;
   // Common
   appName: string;
@@ -23,8 +21,6 @@ export type Translation = {
   homeFeature1Desc: string;
   homeFeature2Title: string;
   homeFeature2Desc: string;
-  homeFeature3Title: string;
-  homeFeature3Desc: string;
   // Image Diagnosis
   imageUploadTitle: string;
   imageUploadDesc: string;
@@ -37,16 +33,14 @@ export const translations: { [key: string]: Translation } = {
   en: {
     navHome: 'Home',
     navImageDiagnosis: 'Image Diagnosis',
-    navVoiceAssistant: 'Voice Assistant',
-    navTextChat: 'Text Chat',
+    navAiAssistant: 'AI Assistant',
     navLocationInfo: 'Location Info',
     navDigitalSolutions: 'Digital Solutions',
     navAboutUs: 'About Us',
     navLanguage: 'Language',
     titleHome: 'Dashboard',
     titleImageDiagnosis: 'Plant Disease Diagnosis',
-    titleVoiceAssistant: 'Voice Assistant',
-    titleTextChat: 'AI Chat Assistant',
+    titleAiAssistant: 'AI Assistant',
     titleLocationInfo: 'Local Information',
     appName: 'SproutGrow Agent',
     homeHeroTitle: 'Your AI Farming Companion',
@@ -58,9 +52,6 @@ export const translations: { [key: string]: Translation } = {
     homeFeature2Title: 'Speak & Advise',
     homeFeature2Desc:
       'Use your voice to ask for farming advice, weather updates, and more.',
-    homeFeature3Title: 'Market Insights',
-    homeFeature3Desc:
-      'Get real-time market prices and government scheme information for your location.',
     imageUploadTitle: 'Diagnose Plant Disease',
     imageUploadDesc:
       'Upload an image of an affected plant leaf to get a diagnosis.',

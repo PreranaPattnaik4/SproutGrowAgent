@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Briefcase,
   Info,
+  Bot,
 } from 'lucide-react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -44,18 +45,11 @@ export default function Home() {
       cta: 'Diagnose Crop',
     },
     {
-      title: 'Voice Assistant',
-      description: 'Use your voice to ask for farming advice, get weather updates, and receive real-time market information, hands-free.',
-      icon: Mic,
-      href: '/voice-assistant',
+      title: 'AI Assistant',
+      description: 'Use voice or text to ask for farming advice, get weather updates, and receive real-time market information, hands-free.',
+      icon: Bot,
+      href: '/ai-assistant',
       cta: 'Ask a Question',
-    },
-    {
-      title: 'AI Text Chat',
-      description: 'Prefer to type? Our AI chatbot is available 24/7 to help you with your farming questions and concerns.',
-      icon: MessageSquare,
-      href: '/text-chat',
-      cta: 'Start Chatting',
     },
   ];
 
@@ -108,7 +102,7 @@ export default function Home() {
                 Everything you need for smarter farming, right at your fingertips.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {features.map((feature) => (
                 <Card key={feature.title} className="flex flex-col text-center">
                   <CardContent className="flex flex-1 flex-col items-center justify-between space-y-4 p-6">

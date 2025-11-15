@@ -13,6 +13,7 @@ import {
   Info,
   Menu,
   X,
+  Bot,
 } from 'lucide-react';
 import { useI18n } from '@/hooks/use-i18n';
 import { cn } from '@/lib/utils';
@@ -33,8 +34,7 @@ export function Header() {
   const navItems = [
     { href: '/', label: t.navHome, icon: Home },
     { href: '/image-diagnosis', label: t.navImageDiagnosis, icon: ImageIcon },
-    { href: '/voice-assistant', label: t.navVoiceAssistant, icon: Mic },
-    { href: '/text-chat', label: t.navTextChat, icon: MessageSquare },
+    { href: '/ai-assistant', label: t.navAiAssistant, icon: Bot },
     { href: '/location-info', label: t.navLocationInfo, icon: MapPin },
     {
       href: '/digital-solutions',

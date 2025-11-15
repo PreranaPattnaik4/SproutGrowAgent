@@ -19,7 +19,15 @@ export const LanguageContext = createContext<LanguageContextType | undefined>(
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
-  const t = useMemo(() => translations[language], [language]);
+  const t = useMemo(() => {
+    // @ts-ignore
+    const proxy = new Proxy(translations.en, {
+      get: (target, prop) => {
+        return translations[language][prop as keyof Translation] || target[prop as keyof Translation];
+      }
+    });
+    return proxy;
+  }, [language]);
 
   const value = { language, setLanguage, t };
 
