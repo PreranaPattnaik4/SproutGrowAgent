@@ -140,33 +140,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Us Section */}
-        <section className="bg-primary/5 py-12 md:py-16">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="mb-4 text-center font-headline text-3xl font-bold text-primary">
-                Our Mission: To Empower Farmers
-              </h2>
-              <p className="mb-8 text-muted-foreground">
-                Learn more about our dedication to cultivating trust, nurturing
-                innovation, and empowering the farming community through
-                technology.
-              </p>
-              <Link href="/about-us" passHref>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary/50 text-primary hover:bg-primary/10"
-                >
-                  <Info className="mr-2 h-5 w-5" />
-                  About SproutGrow Agent
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-
         {/* Trusted By Section */}
         <section className="bg-background px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2">
@@ -211,6 +184,32 @@ export default function Home() {
                   data-ai-hint="hand seedling"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Us Section */}
+        <section className="bg-primary/5 py-12 md:py-16">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="mb-4 text-center font-headline text-3xl font-bold text-primary">
+                Our Mission: To Empower Farmers
+              </h2>
+              <p className="mb-8 text-muted-foreground">
+                Learn more about our dedication to cultivating trust, nurturing
+                innovation, and empowering the farming community through
+                technology.
+              </p>
+              <Link href="/about-us" passHref>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary/50 text-primary hover:bg-primary/10"
+                >
+                  <Info className="mr-2 h-5 w-5" />
+                  About SproutGrow Agent
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
