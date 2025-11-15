@@ -19,17 +19,23 @@ export function ChatbotPopup() {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className="animate-shine fixed bottom-6 right-6 h-16 w-16 rounded-full bg-accent text-accent-foreground shadow-lg hover:bg-accent/90 focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="animate-shine fixed bottom-6 right-6 h-16 w-16 rounded-full bg-accent text-accent-foreground shadow-xl transition-transform duration-300 hover:scale-110 focus:ring-2 focus:ring-ring focus:ring-offset-2"
           aria-label="Open AI Chat"
         >
           <MessageSquarePlus className="h-8 w-8" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="p-0 sm:max-w-[425px] md:max-w-lg">
-        <DialogHeader className="border-b p-4">
-          <DialogTitle className="font-headline">{t.titleTextChat}</DialogTitle>
-        </DialogHeader>
-        <TextChatInterface />
+      <DialogContent className="h-[90vh] max-h-[700px] w-[95vw] max-w-[450px] rounded-lg border-0 bg-background/80 p-0 shadow-2xl backdrop-blur-md sm:h-[80vh]">
+        <div className="flex h-full flex-col">
+          <DialogHeader className="border-b border-border/50 p-4">
+            <DialogTitle className="font-headline text-foreground">
+              {t.titleTextChat}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="flex-1 overflow-hidden">
+            <TextChatInterface />
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );

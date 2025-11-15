@@ -30,11 +30,14 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Alegreya&family=Belleza&family=Source+Code+Pro&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Belleza&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
+      <body
+        className="font-body antialiased bg-background"
+        suppressHydrationWarning
+      >
         <I18nProvider>
           <SidebarProvider>
             <Sidebar>
