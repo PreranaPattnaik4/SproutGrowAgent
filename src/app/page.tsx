@@ -67,7 +67,7 @@ export default function Home() {
       <Header title="Dashboard" />
       <main className='flex-1'>
         {/* Hero Section */}
-        <section className="relative w-full overflow-hidden bg-primary/10 py-12 md:py-20">
+        <section className="relative w-full overflow-hidden bg-background py-12 md:py-20">
           <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center gap-2 md:justify-start">
