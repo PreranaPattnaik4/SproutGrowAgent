@@ -9,6 +9,7 @@ import {
   MessageSquare,
   MapPin,
   Leaf,
+  Briefcase,
 } from 'lucide-react';
 
 import { useI18n } from '@/hooks/use-i18n';
@@ -32,6 +33,7 @@ export function SidebarNav() {
     { href: '/voice-assistant', label: t.navVoiceAssistant, icon: Mic },
     { href: '/text-chat', label: t.navTextChat, icon: MessageSquare },
     { href: '/location-info', label: t.navLocationInfo, icon: MapPin },
+    { href: '/digital-solutions', label: t.navDigitalSolutions, icon: Briefcase },
   ];
 
   return (
