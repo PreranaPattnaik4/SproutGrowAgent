@@ -10,8 +10,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Alegreya', 'serif'],
-        headline: ['Belleza', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
+        headline: ['Playfair Display', 'serif'],
+        'logo-wander': ['Poppins', 'sans-serif'],
+        'logo-wise': ['Playfair Display', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

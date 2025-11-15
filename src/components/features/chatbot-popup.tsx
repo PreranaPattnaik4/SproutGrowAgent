@@ -1,6 +1,6 @@
 'use client';
 
-import { Leaf, MessageSquare } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -31,10 +31,19 @@ export function ChatbotPopup() {
       >
         <div className="flex h-full flex-col">
           <SheetHeader className="flex flex-row items-center space-x-4 border-b border-border/50 p-4">
-            <Leaf className="h-8 w-8 text-primary" />
-            <SheetTitle className="font-headline text-2xl text-foreground">
-              {t.appName}
-            </SheetTitle>
+            <div className="flex items-baseline">
+              <span className="font-logo-wander text-2xl font-normal text-primary">
+                Wander
+              </span>
+              <span className="font-logo-wise text-2xl font-bold text-accent">
+                Wise
+              </span>
+              <div className="ml-1 flex h-6 w-6 items-center justify-center rounded-full bg-muted">
+                <span className="font-logo-wise text-xs font-bold text-accent">
+                  AI
+                </span>
+              </div>
+            </div>
           </SheetHeader>
           <div className="flex-1 overflow-hidden">
             <TextChatInterface />

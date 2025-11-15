@@ -8,7 +8,6 @@ import {
   Mic,
   MessageSquare,
   MapPin,
-  Leaf,
   Briefcase,
   Info,
 } from 'lucide-react';
@@ -41,8 +40,19 @@ export function SidebarNav() {
   return (
     <nav className="flex h-full flex-col border-r border-sidebar-border">
       <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-6">
-        <Leaf className="h-8 w-8 text-primary" />
-        <h1 className="text-xl font-headline text-foreground">{t.appName}</h1>
+        <div className="flex items-baseline">
+          <span className="font-logo-wander text-3xl font-normal text-primary">
+            Wander
+          </span>
+          <span className="font-logo-wise text-3xl font-bold text-accent">
+            Wise
+          </span>
+          <div className="ml-1 flex h-7 w-7 items-center justify-center rounded-full bg-muted">
+            <span className="font-logo-wise text-sm font-bold text-accent">
+              AI
+            </span>
+          </div>
+        </div>
       </div>
       <ul className="flex flex-grow flex-col gap-1 p-2">
         {navItems.map((item) => (
