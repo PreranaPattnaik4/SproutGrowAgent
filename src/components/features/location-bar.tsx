@@ -16,14 +16,6 @@ type Location = {
   longitude: number;
 } | null;
 
-// Mock data
-const marketPrices = [
-  { name: 'Tomatoes', price: '₹25/kg' },
-  { name: 'Potatoes', price: '₹15/kg' },
-  { name: 'Onions', price: '₹20/kg' },
-  { name: 'Wheat', price: '₹2200/q' },
-];
-
 const weatherForecast = [
   { day: 'Today', temp: '32°C', icon: Sun },
   { day: 'Tmw', temp: '30°C', icon: Cloudy },
@@ -79,20 +71,6 @@ export function LocationBar() {
                   Lat: {location.latitude.toFixed(2)}, Lon:{' '}
                   {location.longitude.toFixed(2)}
                 </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1">
-                  <Banknote className="h-4 w-4 text-primary" />
-                  <span>Prices:</span>
-                </div>
-                {marketPrices.map((item, index) => (
-                  <div key={index} className="flex items-center gap-1">
-                    <span>{item.name}:</span>
-                    <span className="font-semibold text-foreground">
-                      {item.price}
-                    </span>
-                  </div>
-                ))}
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1">
