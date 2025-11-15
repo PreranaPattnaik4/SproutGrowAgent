@@ -39,10 +39,10 @@ export function SidebarNav() {
   ];
 
   return (
-    <nav className="flex h-full flex-col">
+    <nav className="flex h-full flex-col border-r border-sidebar-border">
       <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-6">
-        <Leaf className="h-8 w-8 text-sidebar-primary" />
-        <h1 className="text-xl font-headline text-white">{t.appName}</h1>
+        <Leaf className="h-8 w-8 text-primary" />
+        <h1 className="text-xl font-headline text-foreground">{t.appName}</h1>
       </div>
       <ul className="flex flex-grow flex-col gap-1 p-2">
         {navItems.map((item) => (
@@ -70,7 +70,7 @@ export function SidebarNav() {
           value={language}
           onValueChange={(value) => setLanguage(value as Language)}
         >
-          <SelectTrigger className="w-full border-sidebar-border bg-sidebar-accent text-sidebar-accent-foreground">
+          <SelectTrigger className="w-full border-input bg-background text-foreground">
             <SelectValue placeholder="Select language" />
           </SelectTrigger>
           <SelectContent>

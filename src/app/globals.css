@@ -25,13 +25,13 @@
     --ring: 48 94% 62%;
 
     /* Custom sidebar colors */
-    --sidebar-background: 152 22% 25%; /* Dark Forest Green */
-    --sidebar-foreground: 140 20% 97%; /* Off-White */
-    --sidebar-primary: 48 94% 62%; /* Sun Yellow */
-    --sidebar-primary-foreground: 152 15% 20%;
-    --sidebar-accent: 152 15% 35%;
-    --sidebar-accent-foreground: 140 20% 97%;
-    --sidebar-border: 152 15% 30%;
+    --sidebar-background: 140 20% 97%; /* Off-White */
+    --sidebar-foreground: 152 15% 20%; /* Dark Forest Green */
+    --sidebar-primary: 152 22% 25%; /* Dark Forest Green */
+    --sidebar-primary-foreground: 140 20% 97%; /* Off-white */
+    --sidebar-accent: 80 20% 88%; /* Lighter Sage */
+    --sidebar-accent-foreground: 152 15% 20%; /* Dark Forest Green */
+    --sidebar-border: 80 20% 80%;
     --sidebar-ring: 48 94% 62%;
   }
 
