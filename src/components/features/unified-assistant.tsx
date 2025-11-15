@@ -13,7 +13,7 @@ import {
   MicOff,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
@@ -36,6 +36,7 @@ export function UnifiedAssistant() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const imageInputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isListening, setIsListening] = useState(false);
   const [isSpeechSupported, setIsSpeechSupported] = useState(false);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -74,6 +75,14 @@ export function UnifiedAssistant() {
       () => setLocation(undefined)
     );
   }, []);
+  
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      const scrollHeight = textareaRef.current.scrollHeight;
+      textareaRef.current.style.height = `${scrollHeight}px`;
+    }
+  }, [input]);
 
   const handleSendMessage = async ({
     text,
@@ -135,6 +144,13 @@ export function UnifiedAssistant() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleSendMessage({ text: input });
+  };
+  
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleFormSubmit(e as any);
+    }
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -294,7 +310,7 @@ export function UnifiedAssistant() {
           )}
           <form
             onSubmit={handleFormSubmit}
-            className="relative flex items-center gap-2"
+            className="relative flex items-start gap-2"
           >
             <input
               type="file"
@@ -307,7 +323,7 @@ export function UnifiedAssistant() {
               type="button"
               size="icon"
               variant="ghost"
-              className="text-muted-foreground hover:text-foreground"
+              className="flex-shrink-0 text-muted-foreground hover:text-foreground"
               disabled={isLoading}
               onClick={() => imageInputRef.current?.click()}
               aria-label="Upload Image"
@@ -319,7 +335,7 @@ export function UnifiedAssistant() {
                 type="button"
                 size="icon"
                 variant={isListening ? 'destructive' : 'ghost'}
-                className="text-muted-foreground hover:text-foreground"
+                className="flex-shrink-0 text-muted-foreground hover:text-foreground"
                 disabled={isLoading}
                 onClick={toggleListening}
                 aria-label="Use Microphone"
@@ -327,17 +343,20 @@ export function UnifiedAssistant() {
                 {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
               </Button>
             )}
-            <Input
+            <Textarea
+              ref={textareaRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder="Ask a question or describe your issue..."
-              className="flex-1 pr-12 bg-background/50 border-primary/20 focus:ring-accent"
+              className="flex-1 resize-none overflow-hidden pr-12 bg-background/50 border-primary/20 focus:ring-accent min-h-[40px] max-h-[200px]"
+              rows={1}
               disabled={isLoading}
             />
             <Button
               type="submit"
               size="icon"
-              className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 bg-accent text-accent-foreground hover:bg-accent/90"
+              className="absolute right-3 bottom-2 h-8 w-8 bg-accent text-accent-foreground hover:bg-accent/90"
               disabled={isLoading || (!input.trim() && messages.length === 0)}
               aria-label="Send Message"
             >
@@ -349,3 +368,5 @@ export function UnifiedAssistant() {
     </Card>
   );
 }
+
+    
