@@ -71,9 +71,15 @@ export default function Home() {
           <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center gap-2 md:justify-start">
-                <Leaf className="h-8 w-8 text-primary" />
-                <span className="font-headline text-2xl font-bold tracking-wider text-muted-foreground">
-                  SPROUTGROW AGENT
+                <span className="font-headline text-2xl font-bold tracking-tight text-foreground">
+                  <span style={{ color: '#8ca89b' }}>Wander</span>
+                  <span style={{ color: '#4d423d' }}>Wise</span>
+                </span>
+                <span
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-sm font-bold"
+                  style={{ color: '#4d423d' }}
+                >
+                  AI
                 </span>
               </div>
               <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl">
@@ -206,7 +212,7 @@ export default function Home() {
                   className="border-primary/50 text-primary hover:bg-primary/10"
                 >
                   <Info className="mr-2 h-5 w-5" />
-                  About SproutGrow Agent
+                  About WanderWise AI
                 </Button>
               </Link>
             </div>

@@ -11,7 +11,7 @@ import { ChatbotPopup } from '@/components/features/chatbot-popup';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'SproutGrow Agent',
+  title: 'WanderWise AI',
   description: 'Your AI Farming Companion',
 };
 

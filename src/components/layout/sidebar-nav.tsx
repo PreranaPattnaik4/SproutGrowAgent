@@ -10,7 +10,6 @@ import {
   MapPin,
   Briefcase,
   Info,
-  Leaf,
 } from 'lucide-react';
 
 import { useI18n } from '@/hooks/use-i18n';
@@ -40,14 +39,17 @@ export function SidebarNav() {
 
   return (
     <nav className="flex h-full flex-col border-r border-sidebar-border">
-      <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-6">
-        <Leaf className="h-8 w-8 text-primary" />
-        <div className="flex flex-col">
-          <span className="font-headline text-xl font-bold tracking-tight text-foreground">
-            SproutGrow Agent
-          </span>
-          <span className="text-xs text-muted-foreground">AI Farming Companion</span>
-        </div>
+      <div className="flex items-center gap-2 border-b border-sidebar-border px-4 py-6">
+        <span className="font-headline text-2xl font-bold tracking-tight text-foreground">
+          <span style={{ color: '#8ca89b' }}>Wander</span>
+          <span style={{ color: '#4d423d' }}>Wise</span>
+        </span>
+        <span
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-sm font-bold"
+          style={{ color: '#4d423d' }}
+        >
+          AI
+        </span>
       </div>
       <ul className="flex flex-grow flex-col gap-1 p-2">
         {navItems.map((item) => (

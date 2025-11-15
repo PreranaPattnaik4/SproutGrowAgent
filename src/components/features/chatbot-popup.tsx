@@ -1,12 +1,11 @@
 'use client';
 
-import { MessageSquare, Leaf } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { TextChatInterface } from './text-chat-interface';
@@ -32,15 +31,16 @@ export function ChatbotPopup() {
         <div className="flex h-full flex-col">
           <SheetHeader className="flex flex-row items-center space-x-4 border-b border-border/50 p-4">
             <div className="flex items-center gap-2">
-              <Leaf className="h-7 w-7 text-primary" />
-              <div className="flex flex-col">
-                <span className="font-headline text-xl font-bold tracking-tight text-foreground">
-                  SproutGrow Agent
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  AI Farming Companion
-                </span>
-              </div>
+              <span className="font-headline text-xl font-bold tracking-tight text-foreground">
+                <span style={{ color: '#8ca89b' }}>Wander</span>
+                <span style={{ color: '#4d423d' }}>Wise</span>
+              </span>
+              <span
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-stone-200 text-xs font-bold"
+                style={{ color: '#4d423d' }}
+              >
+                AI
+              </span>
             </div>
           </SheetHeader>
           <div className="flex-1 overflow-hidden">

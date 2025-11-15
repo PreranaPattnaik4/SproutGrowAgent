@@ -46,7 +46,7 @@ const aboutContent = [
       {
         title: 'Collaborative Spirit',
         description:
-          'We foster collaboration & teamwork across functions to fulfill a common goal of enhancing & amplifying the mission behind SproutGrow Agent: Passion for Problem-Solving.',
+          'We foster collaboration & teamwork across functions to fulfill a common goal of enhancing & amplifying the mission behind WanderWise AI: Passion for Problem-Solving.',
       },
       {
         title: 'Problem-Solving Passion',
@@ -91,7 +91,7 @@ export default function AboutUsPage() {
       <main className="flex-1 p-4 md:p-6 lg:p-8">
         <div className="mx-auto max-w-5xl">
           <h1 className="mb-8 text-center font-headline text-3xl font-bold text-foreground">
-            About SproutGrow Agent
+            About WanderWise AI
           </h1>
 
           <Tabs defaultValue="trust" className="w-full">
