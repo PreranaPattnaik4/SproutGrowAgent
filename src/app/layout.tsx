@@ -11,8 +11,8 @@ import { ChatbotPopup } from '@/components/features/chatbot-popup';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'WanderWise AI',
-  description: 'Your AI Travel Companion',
+  title: 'SproutGrow Agent',
+  description: 'Your AI Farming Companion',
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap"
           rel="stylesheet"
         />
       </head>

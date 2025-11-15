@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -19,7 +19,7 @@ export function ChatbotPopup() {
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          className="fixed bottom-6 right-6 h-16 w-16 rounded-full bg-accent text-accent-foreground shadow-xl transition-transform duration-300 hover:scale-110 focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full bg-primary text-primary-foreground shadow-xl transition-transform duration-300 hover:scale-110 focus:ring-2 focus:ring-ring focus:ring-offset-2"
           aria-label="Open AI Chat"
         >
           <MessageSquare className="h-8 w-8" />
@@ -31,16 +31,14 @@ export function ChatbotPopup() {
       >
         <div className="flex h-full flex-col">
           <SheetHeader className="flex flex-row items-center space-x-4 border-b border-border/50 p-4">
-            <div className="flex items-baseline">
-              <span className="font-logo-wander text-2xl font-normal text-primary">
-                Wander
-              </span>
-              <span className="font-logo-wise text-2xl font-bold text-accent">
-                Wise
-              </span>
-              <div className="ml-1 flex h-6 w-6 items-center justify-center rounded-full bg-muted">
-                <span className="font-logo-wise text-xs font-bold text-accent">
-                  AI
+            <div className="flex items-center gap-2">
+              <Leaf className="h-7 w-7 text-primary" />
+              <div className="flex flex-col">
+                <span className="font-headline text-xl font-bold tracking-tight text-foreground">
+                  SproutGrow Agent
+                </span>
+                <span className="text-xs text-muted-foreground">
+                  AI Farming Companion
                 </span>
               </div>
             </div>

@@ -10,10 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Poppins', 'sans-serif'],
-        headline: ['Playfair Display', 'serif'],
-        'logo-wander': ['Poppins', 'sans-serif'],
-        'logo-wise': ['Playfair Display', 'serif'],
+        body: ['Roboto', 'sans-serif'],
+        headline: ['Merriweather', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

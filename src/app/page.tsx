@@ -71,15 +71,16 @@ export default function Home() {
           <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center gap-2 md:justify-start">
+                <Leaf className="h-8 w-8 text-primary" />
                 <span className="font-headline text-2xl font-bold tracking-wider text-muted-foreground">
-                  WANDERWISE AI
+                  SPROUTGROW AGENT
                 </span>
               </div>
               <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl">
-                Your AI Travel Companion
+                Your AI Farming Companion
               </h1>
               <p className="text-lg text-muted-foreground">
-                Instant trip planning, voice assistance, and localized recommendations to empower your travels.
+                Instant crop disease diagnosis, voice assistance, and localized market data to empower your farming.
               </p>
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
@@ -202,7 +203,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary-foreground"
+                  className="border-primary/50 text-primary hover:bg-primary/10"
                 >
                   <Info className="mr-2 h-5 w-5" />
                   About SproutGrow Agent
