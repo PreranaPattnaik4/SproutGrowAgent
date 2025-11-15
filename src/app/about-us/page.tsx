@@ -90,7 +90,7 @@ export default function AboutUsPage() {
       <Header title="About Us" />
       <main className="flex-1 p-4 md:p-6 lg:p-8">
         <div className="mx-auto max-w-5xl">
-          <h1 className="mb-8 text-center font-headline text-3xl font-bold text-primary">
+          <h1 className="mb-8 text-center font-headline text-3xl font-bold text-foreground">
             About SproutGrow Agent
           </h1>
 
@@ -114,7 +114,7 @@ export default function AboutUsPage() {
                     <tab.Icon className="h-32 w-32 text-accent" />
                   </div>
                   <div className="md:col-span-2">
-                    <h2 className="mb-4 font-headline text-2xl font-bold text-primary">
+                    <h2 className="mb-4 font-headline text-2xl font-bold text-foreground">
                       {tab.title}
                     </h2>
                     <ul className="space-y-4">

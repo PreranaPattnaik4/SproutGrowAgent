@@ -67,19 +67,19 @@ export default function DigitalSolutionsPage() {
       <Header title="Digital Solutions" />
       <main className="p-4 md:p-6 lg:p-8">
         <div className="mx-auto max-w-4xl">
-          <h1 className="mb-8 text-center font-headline text-3xl font-bold text-primary">
+          <h1 className="mb-8 text-center font-headline text-3xl font-bold text-foreground">
             Digital Solution For Farmers
           </h1>
           <Accordion type="single" collapsible className="w-full">
             {digitalSolutions.map((solution, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="font-headline text-lg hover:no-underline">
+              <AccordionItem key={index} value={`item-${index}`} className="border-b-0 rounded-lg mb-2 bg-card shadow-sm">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline p-6">
                   <div className="flex items-center gap-4">
                     <solution.icon className="h-6 w-6 text-primary" />
                     <span>{solution.title}</span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="p-4 text-base">
+                <AccordionContent className="p-6 pt-0 text-base text-muted-foreground">
                   {solution.description}
                 </AccordionContent>
               </AccordionItem>

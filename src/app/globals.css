@@ -4,67 +4,67 @@
 
 @layer base {
   :root {
-    --background: 140 20% 97%; /* Off-White (#F2F7F5) */
-    --foreground: 152 15% 20%; /* Dark Forest Green for text */
-    --card: 140 20% 97%;
-    --card-foreground: 152 15% 20%;
-    --popover: 140 20% 97%;
-    --popover-foreground: 152 15% 20%;
-    --primary: 152 22% 25%; /* Dark Forest Green (#344E41) */
-    --primary-foreground: 48 93% 90%; /* Lighter Sun Yellow for text on dark green */
-    --secondary: 80 20% 64%; /* Muted Sage Green (#A3B18A) */
-    --secondary-foreground: 152 15% 20%;
-    --muted: 80 20% 88%; /* Lighter Sage for backgrounds */
-    --muted-foreground: 152 15% 35%;
-    --accent: 48 94% 62%; /* Sun Yellow (#F9D342) */
-    --accent-foreground: 152 15% 20%;
+    --background: 220 20% 97%; /* Very light cool gray */
+    --foreground: 220 10% 20%; /* Dark slate blue for text */
+    --card: 220 20% 100%; /* Pure White */
+    --card-foreground: 220 10% 20%;
+    --popover: 220 20% 100%;
+    --popover-foreground: 220 10% 20%;
+    --primary: 210 40% 50%; /* Soft Blue */
+    --primary-foreground: 220 20% 99%; /* Almost white for text on blue */
+    --secondary: 220 15% 85%; /* Light Gray */
+    --secondary-foreground: 220 10% 20%;
+    --muted: 220 15% 92%; /* Lighter Gray for backgrounds */
+    --muted-foreground: 220 10% 45%;
+    --accent: 210 50% 60%; /* Slightly brighter blue */
+    --accent-foreground: 220 20% 99%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 80 20% 80%;
-    --input: 80 20% 88%;
-    --ring: 48 94% 62%;
+    --border: 220 15% 88%;
+    --input: 220 15% 94%;
+    --ring: 210 50% 60%;
 
     /* Custom sidebar colors */
-    --sidebar-background: 140 20% 97%; /* Off-White */
-    --sidebar-foreground: 152 15% 20%; /* Dark Forest Green */
-    --sidebar-primary: 152 22% 25%; /* Dark Forest Green */
-    --sidebar-primary-foreground: 140 20% 97%; /* Off-white */
-    --sidebar-accent: 80 20% 88%; /* Lighter Sage */
-    --sidebar-accent-foreground: 152 15% 20%; /* Dark Forest Green */
-    --sidebar-border: 80 20% 80%;
-    --sidebar-ring: 48 94% 62%;
+    --sidebar-background: 220 20% 97%; /* Match body background */
+    --sidebar-foreground: 220 10% 20%; /* Match body foreground */
+    --sidebar-primary: 210 40% 50%; /* Soft Blue */
+    --sidebar-primary-foreground: 220 20% 99%;
+    --sidebar-accent: 220 15% 92%; /* Lighter gray for hover */
+    --sidebar-accent-foreground: 220 10% 20%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 210 50% 60%;
   }
 
   .dark {
-    /* Keeping dark mode consistent for now, can be updated later */
-    --background: 152 15% 10%;
-    --foreground: 140 20% 92%;
-    --card: 152 15% 10%;
-    --card-foreground: 140 20% 92%;
-    --popover: 152 15% 10%;
-    --popover-foreground: 140 20% 92%;
-    --primary: 48 94% 62%;
-    --primary-foreground: 152 15% 20%;
-    --secondary: 80 15% 30%;
-    --secondary-foreground: 140 20% 92%;
-    --muted: 80 15% 20%;
-    --muted-foreground: 140 20% 70%;
-    --accent: 48 94% 62%;
-    --accent-foreground: 152 15% 20%;
+    --background: 220 15% 10%;
+    --foreground: 220 10% 92%;
+    --card: 220 15% 12%;
+    --card-foreground: 220 10% 92%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 92%;
+    --primary: 210 50% 60%;
+    --primary-foreground: 220 10% 20%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 220 10% 92%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 210 50% 70%;
+    --accent-foreground: 220 10% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 80 15% 25%;
-    --input: 80 15% 25%;
-    --ring: 48 94% 62%;
+    --border: 220 15% 25%;
+    --input: 220 15% 25%;
+    --ring: 210 50% 60%;
 
-    --sidebar-background: 152 15% 12%;
-    --sidebar-foreground: 140 20% 92%;
-    --sidebar-primary: 48 94% 62%;
-    --sidebar-primary-foreground: 152 15% 20%;
-    --sidebar-accent: 152 15% 20%;
-    --sidebar-accent-foreground: 140 20% 97%;
-    --sidebar-border: 152 15% 15%;
-    --sidebar-ring: 48 94% 62%;
+    /* Custom sidebar colors for dark mode */
+    --sidebar-background: 220 15% 12%;
+    --sidebar-foreground: 220 10% 92%;
+    --sidebar-primary: 210 50% 60%;
+    --sidebar-primary-foreground: 220 10% 20%;
+    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent-foreground: 220 10% 97%;
+    --sidebar-border: 220 15% 15%;
+    --sidebar-ring: 210 50% 60%;
   }
 }
 
