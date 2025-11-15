@@ -6,7 +6,7 @@ import { Upload, Loader2, Microscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { diagnosePlantDiseaseFromImage } from '@/ai/flows/diagnose-plant-disease-from-image';
+import { answerTextQueryWithChatHistory } from '@/ai/flows/answer-text-query-with-chat-history';
 import { useI18n } from '@/hooks/use-i18n';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -31,10 +31,12 @@ export function ImageDiagnosisForm() {
         setError(null);
         setIsLoading(true);
         try {
-          const result = await diagnosePlantDiseaseFromImage({
+          const result = await answerTextQueryWithChatHistory({
+            query: 'Diagnose the disease in this plant leaf image.',
             photoDataUri: dataUri,
+            chatHistory: [],
           });
-          setDiagnosis(result.diagnosis);
+          setDiagnosis(result.response);
         } catch (err) {
           setError('Failed to get diagnosis. Please try again.');
           console.error(err);

@@ -12,6 +12,12 @@ import {z} from 'genkit';
 
 const AnswerTextQueryWithChatHistoryInputSchema = z.object({
   query: z.string().describe('The text query from the user.'),
+  photoDataUri: z
+    .string()
+    .optional()
+    .describe(
+      "An optional photo of a plant leaf, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
+    ),
   chatHistory: z.array(z.object({role: z.enum(['user', 'assistant']), content: z.string()})).describe('The history of the chat between the user and the assistant.'),
 });
 export type AnswerTextQueryWithChatHistoryInput = z.infer<typeof AnswerTextQueryWithChatHistoryInputSchema>;
@@ -29,9 +35,9 @@ const prompt = ai.definePrompt({
   name: 'answerTextQueryWithChatHistoryPrompt',
   input: {schema: AnswerTextQueryWithChatHistoryInputSchema},
   output: {schema: AnswerTextQueryWithChatHistoryOutputSchema},
-  prompt: `You are a helpful AI assistant that provides information to farmers.
+  prompt: `You are a helpful AI assistant for farmers. You can analyze images and text.
 
-You will be provided with a query from the user and the history of the chat between the user and you. You must use the chat history to provide a relevant response to the user query. The chat history will be an array of objects, where each object has a role (either \"user\" or \"assistant\") and content (the message).
+You will be provided with a query from the user and the history of the chat. You must use the chat history to provide a relevant response.
 
 Chat History:
 {{#each chatHistory}}
@@ -39,6 +45,10 @@ Chat History:
 {{/each}}
 
 User Query: {{query}}
+
+{{#if photoDataUri}}
+Image: {{media url=photoDataUri}}
+{{/if}}
 
 Response: `,
 });

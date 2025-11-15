@@ -1,29 +1,71 @@
 'use client';
 
-import { useState } from 'react';
-import { Paperclip, Mic, ImageUp, Loader2 } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { ArrowUp, Mic, ImageUp, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { answerTextQueryWithChatHistory } from '@/ai/flows/answer-text-query-with-chat-history';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  image?: string;
 }
 
 export function TextChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const [isListening, setIsListening] = useState(false);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      recognitionRef.current = new SpeechRecognition();
+      const recognition = recognitionRef.current;
+      recognition.continuous = false;
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
 
-    const userMessage: Message = { role: 'user', content: input };
+      recognition.onstart = () => {
+        setIsListening(true);
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+        handleSendMessage(transcript);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error', event.error);
+        setIsListening(false);
+      };
+    }
+  }, []);
+
+  const handleSendMessage = async (
+    text: string,
+    imageDataUri: string | undefined = undefined
+  ) => {
+    if (!text.trim() && !imageDataUri) return;
+
+    const userMessage: Message = {
+      role: 'user',
+      content: text,
+      ...(imageDataUri && { image: imageDataUri }),
+    };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -35,8 +77,9 @@ export function TextChatInterface() {
       }));
 
       const result = await answerTextQueryWithChatHistory({
-        query: input,
-        chatHistory: chatHistory.slice(0, -1), // Send history before the current message
+        query: text,
+        chatHistory: chatHistory.slice(0, -1),
+        photoDataUri: imageDataUri,
       });
 
       const assistantMessage: Message = {
@@ -53,6 +96,34 @@ export function TextChatInterface() {
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSendMessage(input);
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const dataUri = reader.result as string;
+        handleSendMessage(
+          input || 'What do you see in this image?',
+          dataUri
+        );
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const toggleListening = () => {
+    if (isListening) {
+      recognitionRef.current?.stop();
+    } else {
+      recognitionRef.current?.start();
     }
   };
 
@@ -81,6 +152,15 @@ export function TextChatInterface() {
                     : 'border border-primary/20 bg-card'
                 )}
               >
+                {message.image && (
+                  <Image
+                    src={message.image}
+                    alt="User upload"
+                    width={300}
+                    height={200}
+                    className="mb-2 rounded-md"
+                  />
+                )}
                 <p className="font-body">{message.content}</p>
               </div>
               {message.role === 'user' && (
@@ -103,23 +183,35 @@ export function TextChatInterface() {
         </div>
       </ScrollArea>
       <div className="border-t border-primary/10 bg-transparent p-4">
-        <form onSubmit={handleSendMessage} className="relative flex items-center gap-2">
+        <form
+          onSubmit={handleFormSubmit}
+          className="relative flex items-center gap-2"
+        >
+          <input
+            type="file"
+            ref={imageInputRef}
+            onChange={handleImageUpload}
+            accept="image/*"
+            className="hidden"
+          />
           <Button
             type="button"
             size="icon"
             variant="ghost"
             className="text-muted-foreground hover:text-foreground"
             disabled={isLoading}
+            onClick={() => imageInputRef.current?.click()}
             aria-label="Upload Image"
           >
             <ImageUp className="h-5 w-5" />
           </Button>
-           <Button
+          <Button
             type="button"
             size="icon"
-            variant="ghost"
+            variant={isListening ? 'destructive' : 'ghost'}
             className="text-muted-foreground hover:text-foreground"
             disabled={isLoading}
+            onClick={toggleListening}
             aria-label="Use Microphone"
           >
             <Mic className="h-5 w-5" />
@@ -135,10 +227,10 @@ export function TextChatInterface() {
             type="submit"
             size="icon"
             className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 bg-accent text-accent-foreground hover:bg-accent/90"
-            disabled={isLoading || !input.trim()}
+            disabled={isLoading || (!input.trim() && messages.length === 0)}
             aria-label="Send Message"
           >
-            <Paperclip className="h-4 w-4" />
+            <ArrowUp className="h-4 w-4" />
           </Button>
         </form>
       </div>
