@@ -137,9 +137,11 @@ export function AuthDialog() {
                 Verify & Sign In
               </Button>
               <Button
+                type="button"
                 variant="link"
                 className="w-full"
                 onClick={() => setStep('phone')}
+                disabled={isLoading}
               >
                 Change Number
               </Button>
