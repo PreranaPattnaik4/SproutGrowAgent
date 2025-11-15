@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { LocationBar } from '@/components/features/location-bar';
 
 export default function Home() {
   const trustedByItems = [
@@ -56,6 +57,9 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-background text-foreground">
       <main className='flex-1'>
+        {/* Location Bar */}
+        <LocationBar />
+
         {/* Hero Section */}
         <section className="relative w-full overflow-hidden bg-background py-12 md:py-20">
           <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 lg:gap-16">
