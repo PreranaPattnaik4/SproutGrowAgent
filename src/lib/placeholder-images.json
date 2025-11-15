@@ -1,16 +1,34 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-image",
-      "description": "A lush green farm field under a bright sky",
-      "imageUrl": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYXJtJTIwZmllbGR8ZW58MHx8fHwxNzYzMTk1MjExfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "farm field"
+      "id": "hero-main-bg",
+      "description": "A close-up of a vibrant green seedling sprouting from dark, rich soil, with digital data overlays indicating growth metrics.",
+      "imageUrl": "https://images.unsplash.com/photo-1646995024020-7cc709758263?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwbGFudCUyMGdyb3d0aCUyMGRhdGF8ZW58MHx8fHwxNzYzMjAwODY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "plant growth data"
     },
     {
-      "id": "plant-leaf",
-      "description": "A close-up of a plant leaf with spots",
-      "imageUrl": "https://images.unsplash.com/photo-1643262201267-9bdda9da5f7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwbGFudCUyMGxlYWZ8ZW58MHx8fHwxNzYzMTQ4NDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "plant leaf"
+      "id": "hero-farmers",
+      "description": "An illustration of a male and female farmer holding a basket of fresh produce.",
+      "imageUrl": "https://images.unsplash.com/photo-1726231591275-77a09031d11a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmYXJtZXJzJTIwcHJvZHVjZXxlbnwwfHx8fDE3NjMyMDA4Njl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farmers produce"
+    },
+    {
+      "id": "trusted-agronomist",
+      "description": "An agronomist inspecting a rice paddy with a tablet computer.",
+      "imageUrl": "https://images.unsplash.com/photo-1709141105470-f4baad5ee8be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWdyb25vbWlzdCUyMHRhYmxldHxlbnwwfHx8fDE3NjMyMDA4Njl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "agronomist tablet"
+    },
+    {
+      "id": "trusted-seedling",
+      "description": "A pair of hands carefully holding a young plant seedling in a handful of soil.",
+      "imageUrl": "https://images.unsplash.com/photo-1746728153970-aebb6434fa8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoYW5kJTIwc2VlZGxpbmd8ZW58MHx8fHwxNzYzMjAwODY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hand seedling"
+    },
+    {
+      "id": "hero-bg-overlay",
+      "description": "An aerial view of green farmlands with a soft focus.",
+      "imageUrl": "https://images.unsplash.com/photo-1558242766-3baa58302556?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmYXJtJTIwYWVyaWFsfGVufDB8fHx8MTc2MzIwMDg2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farm aerial"
     }
   ]
 }
