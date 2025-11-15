@@ -1,7 +1,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header } from '@/components/layout/header';
 import {
   Leaf,
   Mic,
@@ -65,7 +64,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-background text-foreground">
-      <Header title="Dashboard" />
       <main className='flex-1'>
         {/* Hero Section */}
         <section className="relative w-full overflow-hidden bg-background py-12 md:py-20">
@@ -77,7 +75,7 @@ export default function Home() {
                   <span style={{ color: '#4d423d' }}>Grow</span>
                 </span>
                 <span
-                  className="flex h-7 w-7 items-center justify-center rounded-full bg-stone-200 text-xs font-bold"
+                  className="flex h-6 w-6 items-center justify-center rounded-full bg-stone-200 text-xs font-bold"
                   style={{ color: '#4d423d' }}
                 >
                   Agent

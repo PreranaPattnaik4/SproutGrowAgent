@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Header } from '@/components/layout/header';
 import {
   FlaskConical,
   Tags,
@@ -64,7 +63,6 @@ const digitalSolutions = [
 export default function DigitalSolutionsPage() {
   return (
     <div className="flex flex-col">
-      <Header title="Digital Solutions" />
       <main className="p-4 md:p-6 lg:p-8">
         <div className="mx-auto max-w-4xl">
           <h1 className="mb-8 text-center font-headline text-3xl font-bold text-foreground">

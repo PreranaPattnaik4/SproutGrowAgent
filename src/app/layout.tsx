@@ -1,13 +1,8 @@
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import { I18nProvider } from '@/providers/i18n-provider';
-import {
-  Sidebar,
-  SidebarInset,
-  SidebarProvider,
-} from '@/components/ui/sidebar';
-import { SidebarNav } from '@/components/layout/sidebar-nav';
 import { ChatbotPopup } from '@/components/features/chatbot-popup';
+import { Header } from '@/components/layout/header';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -39,12 +34,8 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <I18nProvider>
-          <SidebarProvider>
-            <Sidebar>
-              <SidebarNav />
-            </Sidebar>
-            <SidebarInset>{children}</SidebarInset>
-          </SidebarProvider>
+          <Header />
+          <main>{children}</main>
           <ChatbotPopup />
           <Toaster />
         </I18nProvider>

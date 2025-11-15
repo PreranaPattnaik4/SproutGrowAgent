@@ -1,6 +1,5 @@
 'use client';
 
-import { Header } from '@/components/layout/header';
 import {
   Tabs,
   TabsContent,
@@ -87,7 +86,6 @@ const aboutContent = [
 export default function AboutUsPage() {
   return (
     <div className="flex flex-col">
-      <Header title="About Us" />
       <main className="flex-1 p-4 md:p-6 lg:p-8">
         <div className="mx-auto max-w-5xl">
           <h1 className="mb-8 text-center font-headline text-3xl font-bold text-foreground">
