@@ -40,6 +40,35 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>;
 
+const renderMarkdown = (markdown: string) => {
+  if (!markdown) return null;
+  const lines = markdown.split('\n');
+
+  return (
+    <ul className="space-y-1 list-none">
+      {lines.map((line, index) => {
+        const trimmedLine = line.replace(/^- /, '').trim();
+        if (!trimmedLine) return null;
+        
+        // Handle bold text like **Land Preparation:**
+        const parts = trimmedLine.split(/\*\*(.*?)\*\*/g);
+
+        return (
+          <li key={index} className="flex items-start gap-2">
+            <span className="mt-1 text-primary">&#8226;</span>
+            <span>
+              {parts.map((part, i) =>
+                i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+              )}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+
 export function DetailedCropPlanner() {
   const [soilImagePreview, setSoilImagePreview] = useState<string | null>(null);
   const [soilImageDataUri, setSoilImageDataUri] = useState<string | null>(null);
@@ -91,10 +120,10 @@ Crop Recommendation:
 ${plan.recommendation}
 
 Planting Plan:
-${plan.plan.replace(/<\/?[^>]+(>|$)/g, "")}
+${plan.plan}
 
 Additional Tips:
-${plan.tips.replace(/<\/?[^>]+(>|$)/g, "")}
+${plan.tips}
     `;
     const blob = new Blob([content.trim()], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -114,15 +143,6 @@ ${plan.tips.replace(/<\/?[^>]+(>|$)/g, "")}
     window.open(whatsappUrl, '_blank');
   };
   
-  const renderMarkdown = (markdown: string) => {
-    const html = markdown
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/^- (.*$)/gm, '<li class="flex items-start gap-2"><span class="mt-1 text-primary">&#8226;</span><span>$1</span></li>');
-    return <ul className="space-y-1 list-none" dangerouslySetInnerHTML={{ __html: html }} />;
-};
-
-
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <Card>
