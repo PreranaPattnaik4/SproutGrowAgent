@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import { I18nProvider } from '@/providers/i18n-provider';
-import { ChatbotPopup } from '@/components/features/chatbot-popup';
 import { Header } from '@/components/layout/header';
 import './globals.css';
 
@@ -36,7 +35,6 @@ export default function RootLayout({
         <I18nProvider>
           <Header />
           <main>{children}</main>
-          <ChatbotPopup />
           <Toaster />
         </I18nProvider>
       </body>
