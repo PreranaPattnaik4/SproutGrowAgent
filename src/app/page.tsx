@@ -63,6 +63,10 @@ export default function Home() {
       cta: 'Plan Your Crop',
     },
   ];
+  
+  const agronomistImage = placeholderImages.placeholderImages.find(img => img.id === 'trusted-agronomist');
+  const seedlingImage = placeholderImages.placeholderImages.find(img => img.id === 'trusted-seedling');
+
 
   return (
     <div className="flex flex-col bg-background text-foreground">
@@ -181,24 +185,28 @@ export default function Home() {
               </ul>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="relative h-64 w-full">
-                <Image
-                  src="https://picsum.photos/seed/agronomist-tablet/600/400"
-                  alt="An agronomist inspecting a rice paddy with a tablet computer."
-                  fill
-                  className="rounded-lg object-cover shadow-md"
-                  data-ai-hint="agronomist tablet"
-                />
-              </div>
-              <div className="relative h-64 w-full">
-                <Image
-                  src="https://picsum.photos/seed/hand-seedling/600/400"
-                  alt="A pair of hands carefully holding a young plant seedling in a handful of soil."
-                  fill
-                  className="rounded-lg object-cover shadow-md"
-                  data-ai-hint="hand seedling"
-                />
-              </div>
+              {agronomistImage && (
+                <div className="relative h-64 w-full">
+                  <Image
+                    src={agronomistImage.imageUrl}
+                    alt={agronomistImage.description}
+                    fill
+                    className="rounded-lg object-cover shadow-md"
+                    data-ai-hint={agronomistImage.imageHint}
+                  />
+                </div>
+              )}
+              {seedlingImage && (
+                <div className="relative h-64 w-full">
+                  <Image
+                    src={seedlingImage.imageUrl}
+                    alt={seedlingImage.description}
+                    fill
+                    className="rounded-lg object-cover shadow-md"
+                    data-ai-hint={seedlingImage.imageHint}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>

@@ -24,7 +24,7 @@ As of the current version, the following key features have been successfully imp
 
 ### 3.2. Image-Based Plant Disease Diagnosis
 - **File:** `src/app/image-diagnosis/page.tsx`, `src/components/features/image-diagnosis-form.tsx`
-- **AI Flow:** `src/ai/flows/answer-text-query-with-chat-history.ts`
+- **AI Flow:** `src/ai/flows/diagnose-plant-disease-from-image.ts`
 - **Description:** Users can upload an image of a plant leaf. The application sends the image to a Genkit AI flow, which analyzes it using a vision model and returns a potential disease diagnosis. The result is displayed to the user in an organized card layout.
 
 ### 3.3. Unified AI Assistant
@@ -32,21 +32,24 @@ As of the current version, the following key features have been successfully imp
 - **AI Flow:** `src/ai/flows/answer-text-query-with-chat-history.ts`
 - **Description:** A comprehensive, multi-modal assistant that supports interaction via text, voice, and image uploads. The AI maintains chat history to provide contextual follow-up answers. It also includes features to download the conversation history and share the latest AI response on WhatsApp.
 
-### 3.4. Local Information Hub
+### 3.4. AI Crop Planner
+- **File:** `src/app/crop-planner/page.tsx`, `src/components/features/detailed-crop-planner.tsx`
+- **AI Flow:** `src/ai/flows/generate-detailed-crop-plan.ts`
+- **Description:** A dedicated page where users can get a personalized crop plan. By providing a soil image (optional), location, and planting date, the AI generates a detailed recommendation, a step-by-step planting plan, and additional tips for a successful harvest.
+
+### 3.5. Local Information Hub
 - **File:** `src/app/location-info/page.tsx`, `src/components/features/location-info-display.tsx`
 - **Description:** This page uses the browser's geolocation API to fetch the user's current location. It then displays mock data for local weather forecasts, market prices for crops, and relevant government schemes, all presented in a clean, card-based interface.
 
-### 3.5. Digital Solutions
+### 3.6. Digital Solutions
 - **File:** `src/app/digital-solutions/page.tsx`
-- **Description:** An informational page that lists various digital services available to farmers, such as Soil Testing, Crop Insurance, and Market Linkage. It features an interactive accordion layout. This page also includes the "Crop Planner" feature.
-- **Crop Planner:** (`src/components/features/crop-planner.tsx`) An AI-powered tool that generates a stage-by-stage cultivation plan for a user-specified crop.
-- **AI Flow:** `src/ai/flows/generate-crop-plan.ts`
+- **Description:** An informational page that lists various digital services available to farmers, such as Soil Testing, Crop Insurance, and Market Linkage. It features an interactive accordion layout. It also contains a simplified version of the crop planner for quick, high-level plans.
 
-### 3.6. About Us
-- **File:** `src/app/about-us/page.tsx`
-- **Description:** A dedicated page detailing the mission and core values of SproutGrow Agent, organized into sections for Trust, Innovation, and Farmer Empowerment using an interactive tabbed layout.
+### 3.7. About Us & Informational Pages
+- **File:** `src/app/about-us/page.tsx`, `src/app/help/page.tsx`, `src/app/privacy-policy/page.tsx`
+- **Description:** A set of pages detailing the mission of SproutGrow Agent, a Help/FAQ section to guide users, and a standard Privacy Policy.
 
-### 3.7. User Authentication
+### 3.8. User Authentication
 - **File:** `src/components/features/auth-dialog.tsx`
 - **Description:** A dialog-based authentication flow has been implemented, providing a placeholder for mobile number and OTP verification. This sets the foundation for future integration with Firebase Authentication.
 
@@ -54,7 +57,7 @@ As of the current version, the following key features have been successfully imp
 
 - **AI Logic:** All generative AI logic is cleanly separated into Genkit flows within the `src/ai/flows/` directory. This modular approach makes it easy to manage and update the AI-powered features.
 - **UI Components:** The user interface is built with reusable React components located in `src/components/`, following best practices for component-based architecture. ShadCN UI provides a solid foundation of pre-built, accessible components.
-- **Layout and Navigation:** A consistent layout is maintained across all pages using `src/app/layout.tsx` and the `src/components/layout/header.tsx` component, which provides clear and intuitive navigation for both desktop and mobile devices.
+- **Layout and Navigation:** A consistent layout is maintained across all pages using `src/app/layout.tsx` and the `src/components/layout/header.tsx` & `src/components/layout/footer.tsx` components, which provide clear and intuitive navigation.
 - **Internationalization (i18n):** The project includes a basic framework for translation (`src/lib/i18n.ts` and `src/providers/i18n-provider.tsx`), making it ready for future expansion to support multiple languages.
 
 ## 5. Next Steps & Potential Improvements
