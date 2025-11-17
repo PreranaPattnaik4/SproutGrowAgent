@@ -11,6 +11,7 @@ import {
   Briefcase,
   Info,
   Bot,
+  CalendarDays,
 } from 'lucide-react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -53,6 +54,13 @@ export default function Home() {
       icon: Bot,
       href: '/ai-assistant',
       cta: 'Ask a Question',
+    },
+    {
+      title: 'Crop Planner',
+      description: 'Get a personalized crop plan based on your soil, location, and desired planting date for maximum yield.',
+      icon: CalendarDays,
+      href: '/crop-planner',
+      cta: 'Plan Your Crop',
     },
   ];
 
@@ -102,7 +110,7 @@ export default function Home() {
                 Everything you need for smarter farming, right at your fingertips.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {features.map((feature) => (
                 <Card key={feature.title} className="flex flex-col text-center">
                   <CardContent className="flex flex-1 flex-col items-center justify-between space-y-4 p-6">
