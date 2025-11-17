@@ -210,7 +210,7 @@ export function UnifiedAssistant({ isHomepage = false }: UnifiedAssistantProps) 
   const cardClass = cn(
     'mx-auto flex w-full flex-col',
     isHomepage
-      ? 'h-full max-h-[500px] rounded-2xl border bg-background/30 shadow-lg backdrop-blur-xl'
+      ? 'h-full max-h-[600px] rounded-2xl border bg-background/30 shadow-lg backdrop-blur-xl'
       : 'h-full max-w-4xl'
   );
   

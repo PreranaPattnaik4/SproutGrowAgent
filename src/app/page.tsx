@@ -85,7 +85,7 @@ export default function Home() {
                 Instant crop disease diagnosis, voice assistance, and localized market data to empower your farming.
               </p>
             </div>
-            <div className="h-full min-h-[400px] w-full max-w-lg">
+            <div className="h-full min-h-[400px] w-full max-w-2xl">
                 <UnifiedAssistant isHomepage={true} />
             </div>
           </div>
