@@ -12,12 +12,7 @@ SproutGrow Agent is built with a modern, server-centric architecture that levera
 
 ### Architectural Diagram
 
-```
-[User's Browser] <--> [Next.js Frontend Server] <--> [Genkit AI Flows] <--> [Google AI Platform]
-      |                       |                            |                      (Gemini Models)
-      |--- (HTTP/S) ----------|                            |
-      |                       |--- (Server Actions) --------|
-```
+
 
 ### Component Breakdown
 
@@ -62,7 +57,7 @@ This architecture ensures that the application is both powerful and secure. The 
 - **AI Models:** The application leverages Google's Gemini family of models (including `gemini-2.5-flash` for vision and text) for all generative AI tasks.
 - **Server-Side Logic:** Genkit flows, written in TypeScript and marked with `'use server'`, run on the server side to securely handle AI model interactions and data processing.
 - **Data Validation:** Zod is used extensively to define schemas for the inputs and outputs of the Genkit flows, ensuring type safety and data integrity between the client and the AI backend.
-- **Deployment:** The application is configured for deployment on Firebase App Hosting, a serverless platform optimized for modern web apps.
+- **Deployment:** The application is configured for deployment on Render, a serverless platform optimized for modern web apps.
 
 ## 4. Implemented Features
 

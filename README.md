@@ -25,6 +25,8 @@ The application is built on a modern, robust, and scalable technology stack, ens
 
 SproutGrow Agent is built with a modern, server-centric architecture that leverages the full potential of Next.js and Genkit.
 
+
+
 - **Client-Side (Browser):** The frontend is composed of interactive React components. These components are responsible for capturing user input (text, images, voice), managing UI state, and displaying results. They communicate with the server via Next.js Server Actions.
 - **Web Server (Next.js):** The Next.js server handles routing, renders React Server Components, and serves static assets. When a user interacts with an AI feature, the client-side component calls a Server Action.
 - **AI Backend (Genkit Flows):** The Server Actions directly invoke Genkit flows. These flows are server-side TypeScript functions that define the logic for interacting with the Gemini models. They handle prompt engineering, data formatting (e.g., preparing an image for analysis), and calling the Google AI API. This ensures that all AI processing and API key management happen securely on the server.
