@@ -38,6 +38,7 @@ export function UnifiedAssistant() {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isListening, setIsListening] = useState(false);
+  const [wasVoiceInput, setWasVoiceInput] = useState(false);
   const [isSpeechSupported, setIsSpeechSupported] = useState(false);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const [location, setLocation] = useState<string | undefined>(undefined);
@@ -53,16 +54,21 @@ export function UnifiedAssistant() {
       recognition.lang = 'en-US';
       recognition.interimResults = false;
 
-      recognition.onstart = () => setIsListening(true);
-      recognition.onend = () => setIsListening(false);
+      recognition.onstart = () => {
+        setIsListening(true);
+        setWasVoiceInput(true);
+      };
+      recognition.onend = () => {
+        setIsListening(false);
+      };
       recognition.onerror = (event) => {
         console.error('Speech recognition error', event.error);
         setIsListening(false);
       };
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        setInput(transcript);
-        handleSendMessage({ text: transcript });
+        setInput(transcript); // Set the input field with the transcript
+        handleSendMessage({ text: transcript }); // Automatically send the message
       };
     }
 
@@ -75,7 +81,7 @@ export function UnifiedAssistant() {
       () => setLocation(undefined)
     );
   }, []);
-  
+
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -108,14 +114,13 @@ export function UnifiedAssistant() {
         content: msg.content,
       }));
 
-      // For voice queries, we can pass location. The current flow can handle it.
-      const input: AnswerTextQueryWithChatHistoryInput = {
+      const inputPayload: AnswerTextQueryWithChatHistoryInput = {
         query: text,
         chatHistory: chatHistory.slice(0, -1),
         ...(imageDataUri && { photoDataUri: imageDataUri }),
       };
 
-      const result = await answerTextQueryWithChatHistory(input);
+      const result = await answerTextQueryWithChatHistory(inputPayload);
 
       const assistantMessage: Message = {
         role: 'assistant',
@@ -123,12 +128,11 @@ export function UnifiedAssistant() {
       };
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Speak the response if the last input was from voice
-      if (!imageDataUri && isListening) {
-          const utterance = new SpeechSynthesisUtterance(result.response);
-          window.speechSynthesis.speak(utterance);
+      if (wasVoiceInput) {
+        const utterance = new SpeechSynthesisUtterance(result.response);
+        window.speechSynthesis.speak(utterance);
+        setWasVoiceInput(false); // Reset after speaking
       }
-
     } catch (error) {
       console.error('Error calling AI flow:', error);
       const errorMessage: Message = {
@@ -143,9 +147,10 @@ export function UnifiedAssistant() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setWasVoiceInput(false); // It's a text submission
     handleSendMessage({ text: input });
   };
-  
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -159,6 +164,7 @@ export function UnifiedAssistant() {
       const reader = new FileReader();
       reader.onloadend = () => {
         const dataUri = reader.result as string;
+        setWasVoiceInput(false); // Image submission is not voice
         handleSendMessage({
           text: input || 'What do you see in this image?',
           imageDataUri: dataUri,
@@ -173,6 +179,7 @@ export function UnifiedAssistant() {
     if (isListening) {
       recognitionRef.current.stop();
     } else {
+      setInput(''); // Clear input before listening
       recognitionRef.current.start();
     }
   };
@@ -226,7 +233,7 @@ export function UnifiedAssistant() {
               size="sm"
               onClick={shareOnWhatsApp}
               disabled={!messages.some((m) => m.role === 'assistant')}
-              className='bg-green-500 text-white hover:bg-green-600'
+              className="bg-green-500 text-white hover:bg-green-600"
             >
               <Share2 className="mr-2 h-4 w-4" />
               Share
@@ -277,7 +284,9 @@ export function UnifiedAssistant() {
                       className="mb-2 rounded-md"
                     />
                   )}
-                  <p className="font-body whitespace-pre-wrap">{message.content}</p>
+                  <p className="font-body whitespace-pre-wrap">
+                    {message.content}
+                  </p>
                 </div>
                 {message.role === 'user' && (
                   <Avatar className="h-8 w-8">
@@ -299,7 +308,7 @@ export function UnifiedAssistant() {
           </div>
         </ScrollArea>
         <div className="border-t border-primary/10 bg-transparent p-4">
-          {!isSpeechSupported && (
+          {!isSpeechSupported && !isListening && (
             <Alert variant="destructive" className="mb-4">
               <AlertTitle>Browser Not Supported</AlertTitle>
               <AlertDescription>
@@ -340,7 +349,11 @@ export function UnifiedAssistant() {
                 onClick={toggleListening}
                 aria-label="Use Microphone"
               >
-                {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                {isListening ? (
+                  <MicOff className="h-5 w-5" />
+                ) : (
+                  <Mic className="h-5 w-5" />
+                )}
               </Button>
             )}
             <Textarea
@@ -348,10 +361,10 @@ export function UnifiedAssistant() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask a question or describe your issue..."
+              placeholder={isListening ? "Listening..." : "Ask a question or describe your issue..."}
               className="flex-1 resize-none overflow-hidden pr-12 bg-background/50 border-primary/20 focus:ring-accent min-h-[40px] max-h-[200px]"
               rows={1}
-              disabled={isLoading}
+              disabled={isLoading || isListening}
             />
             <Button
               type="submit"
@@ -368,5 +381,3 @@ export function UnifiedAssistant() {
     </Card>
   );
 }
-
-    
