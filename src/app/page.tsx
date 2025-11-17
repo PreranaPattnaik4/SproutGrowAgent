@@ -85,11 +85,11 @@ export default function Home() {
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
               <Image
-                src="https://storage.googleapis.com/studiogpt-interact-20240513-001/projects/e5a0e380-482a-45c1-93a8-a669707e781c/9103c809-ce80-496a-a241-11b3337a4a2f.png"
-                alt="A plant growing inside a futuristic, data-driven biodome, illustrating smart agriculture."
+                src="https://images.unsplash.com/photo-1621926226493-4a50b3d333b4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNtYXJ0JTIwZmFybWluZ3xlbnwwfHwwfHx8MA%3D%3D"
+                alt="Farmer using a tablet in a field, representing smart agriculture technology."
                 layout="fill"
                 className="rounded-lg object-cover shadow-2xl"
-                data-ai-hint="futuristic agriculture"
+                data-ai-hint="smart farming"
               />
             </div>
           </div>
