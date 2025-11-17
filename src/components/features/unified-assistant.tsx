@@ -41,7 +41,6 @@ export function UnifiedAssistant() {
   const [wasVoiceInput, setWasVoiceInput] = useState(false);
   const [isSpeechSupported, setIsSpeechSupported] = useState(false);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
-  const [location, setLocation] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const SpeechRecognition =
@@ -71,15 +70,6 @@ export function UnifiedAssistant() {
         handleSendMessage({ text: transcript }); // Automatically send the message
       };
     }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLocation(
-          `${position.coords.latitude}, ${position.coords.longitude}`
-        );
-      },
-      () => setLocation(undefined)
-    );
   }, []);
 
   useEffect(() => {
@@ -245,7 +235,7 @@ export function UnifiedAssistant() {
         <ScrollArea className="flex-1 p-4">
           <div className="space-y-4">
             {messages.length === 0 && !isLoading && (
-              <div className="flex flex-col items-center justify-center text-center text-muted-foreground">
+              <div className="flex flex-col items-center justify-center text-center text-muted-foreground pt-12">
                 <Bot className="mb-4 h-16 w-16" />
                 <p>
                   Welcome to your AI Assistant.
@@ -308,14 +298,13 @@ export function UnifiedAssistant() {
           </div>
         </ScrollArea>
         <div className="border-t border-primary/10 bg-transparent p-4">
-          {!isSpeechSupported && !isListening && (
-            <Alert variant="destructive" className="mb-4">
+          {!isSpeechSupported && (
+             <Alert variant="destructive" className="mb-4">
               <AlertTitle>Browser Not Supported</AlertTitle>
               <AlertDescription>
-                Your browser does not support voice recognition. Please try
-                typing.
+                Your browser does not support voice recognition. Please try typing.
               </AlertDescription>
-            </Alert>
+             </Alert>
           )}
           <form
             onSubmit={handleFormSubmit}
@@ -370,7 +359,7 @@ export function UnifiedAssistant() {
               type="submit"
               size="icon"
               className="absolute right-3 bottom-2 h-8 w-8 bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={isLoading || (!input.trim() && messages.length === 0)}
+              disabled={isLoading || !input.trim()}
               aria-label="Send Message"
             >
               <ArrowUp className="h-4 w-4" />
