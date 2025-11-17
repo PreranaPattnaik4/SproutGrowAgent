@@ -1,24 +1,18 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Bot,
+  Loader2,
   Mic,
   Send,
-  X,
-  Loader2,
   User,
+  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -52,7 +46,7 @@ export function ChatbotPopup() {
       setIsLoading(false);
     }, 1500);
   };
-  
+
   const Logo = () => (
     <Link href="/" className="flex items-center gap-2">
       <span className="font-headline text-lg font-bold tracking-tight text-foreground">
@@ -68,21 +62,18 @@ export function ChatbotPopup() {
     </Link>
   );
 
-
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="h-[70vh] w-[90vw] max-w-lg p-0 sm:rounded-lg bg-card/80 backdrop-blur-xl border-primary/20">
-          <DialogHeader className="p-4 border-b border-primary/10">
-            <DialogTitle className="flex items-center justify-between">
+      {isOpen && (
+        <div className="fixed bottom-6 right-6 z-50 h-[70vh] w-[90vw] max-w-lg sm:rounded-lg bg-card/80 backdrop-blur-xl border border-primary/20 shadow-2xl flex flex-col">
+          <div className="p-4 border-b border-primary/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
                  <Logo />
               </div>
               <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="h-6 w-6">
                 <X className="h-4 w-4" />
               </Button>
-            </DialogTitle>
-          </DialogHeader>
+          </div>
           <div className="flex h-full flex-col">
             <ScrollArea className="flex-1 p-4">
               <div className="space-y-4">
@@ -156,17 +147,22 @@ export function ChatbotPopup() {
               </form>
             </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      )}
       
       {!isOpen && (
-        <Button
+        <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg"
-          size="icon"
+          className="fixed bottom-6 right-6 w-24 h-20 animate-float cursor-pointer group"
+          aria-label="Open Chat"
         >
-          <Bot className="h-8 w-8" />
-        </Button>
+          <div className="absolute top-0 right-4 w-16 h-16 bg-background rounded-full transition-transform duration-300 ease-in-out group-hover:scale-110 shadow-lg"></div>
+          <div className="absolute bottom-0 right-0 w-12 h-12 bg-background rounded-full transition-transform duration-300 ease-in-out group-hover:scale-110 shadow-md"></div>
+          <div className="absolute top-4 left-0 w-14 h-14 bg-background rounded-full transition-transform duration-300 ease-in-out group-hover:scale-110 shadow-md"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Bot className="h-8 w-8 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125" />
+          </div>
+        </button>
       )}
     </>
   );
