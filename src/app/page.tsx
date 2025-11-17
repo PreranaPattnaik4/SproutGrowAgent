@@ -85,11 +85,11 @@ export default function Home() {
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
               <Image
-                src="https://img.freepik.com/free-photo/glowing-plant-growing-futuristic-automated-greenhouse_188544-29009.jpg"
-                alt="A plant growing inside a protective, glowing glass bubble in a futuristic greenhouse, symbolizing AI-powered agriculture technology."
+                src="https://img.freepik.com/free-photo/person-holding-plant-with-environmental-icons_53876-97887.jpg"
+                alt="Hands holding a plant with soil, surrounded by icons representing nature and technology."
                 layout="fill"
                 className="rounded-lg object-cover shadow-2xl"
-                data-ai-hint="futuristic agriculture"
+                data-ai-hint="environmental technology agriculture"
               />
             </div>
           </div>
@@ -228,5 +228,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
