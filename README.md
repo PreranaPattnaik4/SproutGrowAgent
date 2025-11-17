@@ -8,29 +8,29 @@ SproutGrow Agent is a web-based application designed to act as an "AI Farming Co
 
 The application is built on a modern, robust, and scalable technology stack, ensuring a high-quality user experience and a professional, responsive design.
 
-## 2. Getting Started
+## 2. Technology Stack
 
-To get started with development:
-
-1.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-2.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-
-Open [http://localhost:9002](http://localhost:9002) with your browser to see the result.
-
-## 3. Technology Stack
-
-- **Frontend Framework:** Next.js (with App Router) & React
+### 2.1. Frontend Technologies
+- **Framework:** Next.js (with App Router) & React
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS with ShadCN UI components for a consistent and professional design system.
-- **Generative AI:** Google's Gemini models, orchestrated through Genkit.
-- **Deployment:** Configured for Firebase App Hosting.
+- **State Management:** React Hooks and Context API for managing component-level and application-wide state.
+
+### 2.2. Backend (AI) Technologies
+- **AI Framework:** Genkit, an open-source framework from Google, is used to build, manage, and monitor the application's AI capabilities.
+- **AI Models:** The application leverages Google's Gemini family of models (including vision and text models) for all generative AI tasks, such as image analysis and conversational chat.
+- **Server-Side Logic:** Genkit flows, written in TypeScript and marked with `'use server'`, run on the server side to securely handle AI model interactions and data processing.
+
+## 3. Application Architecture
+
+SproutGrow Agent is built with a modern, server-centric architecture that leverages the full potential of Next.js and Genkit.
+
+- **Client-Side (Browser):** The frontend is composed of interactive React components. These components are responsible for capturing user input (text, images, voice), managing UI state, and displaying results. They communicate with the server via Next.js Server Actions.
+- **Web Server (Next.js):** The Next.js server handles routing, renders React Server Components, and serves static assets. When a user interacts with an AI feature, the client-side component calls a Server Action.
+- **AI Backend (Genkit Flows):** The Server Actions directly invoke Genkit flows. These flows are server-side TypeScript functions that define the logic for interacting with the Gemini models. They handle prompt engineering, data formatting (e.g., preparing an image for analysis), and calling the Google AI API. This ensures that all AI processing and API key management happen securely on the server.
+- **Google AI Platform:** This is the external service that hosts the powerful Gemini models. Genkit handles the communication with this platform, sending the prepared prompts and receiving the generated responses.
+
+This architecture ensures a secure, scalable, and efficient application. By keeping all AI logic on the server, we protect sensitive API keys and can perform complex data processing without slowing down the user's browser.
 
 ## 4. Implemented Features
 
@@ -70,18 +70,3 @@ As of the current version, the following key features have been successfully imp
 ### 4.8. User Authentication
 - **File:** `src/components/features/auth-dialog.tsx`
 - **Description:** A dialog-based authentication flow has been implemented, providing a placeholder for mobile number and OTP verification. This sets the foundation for future integration with Firebase Authentication.
-
-## 5. Code and Project Structure
-
-- **AI Logic:** All generative AI logic is cleanly separated into Genkit flows within the `src/ai/flows/` directory. This modular approach makes it easy to manage and update the AI-powered features.
-- **UI Components:** The user interface is built with reusable React components located in `src/components/`, following best practices for component-based architecture. ShadCN UI provides a solid foundation of pre-built, accessible components.
-- **Layout and Navigation:** A consistent layout is maintained across all pages using `src/app/layout.tsx` and the `src/components/layout/header.tsx` & `src/components/layout/footer.tsx` components, which provide clear and intuitive navigation.
-- **Internationalization (i18n):** The project includes a basic framework for translation (`src/lib/i18n.ts` and `src/providers/i18n-provider.tsx`), making it ready for future expansion to support multiple languages.
-
-## 6. Next Steps & Potential Improvements
-
-- **Backend Integration:** Connect the local information hub to live APIs for weather, market data, and government schemes.
-- **Full User Authentication:** Complete the Firebase Authentication integration to enable user accounts, which would allow for saving diagnosis history and personalizing the user experience.
-- **Data Persistence:** Use a database like Firestore to store user data, chat history, and submitted images.
-- **AI Flow Enhancement:** Refine the AI prompts and potentially use Genkit Tools to allow the AI to fetch live data directly, making its responses more dynamic and accurate.
-- **Expand Digital Solutions:** Implement the remaining placeholder features on the Digital Solutions page, such as Soil Testing and Farm Tagging, potentially with their own dedicated AI flows.
