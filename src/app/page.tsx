@@ -85,11 +85,11 @@ export default function Home() {
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
               <Image
-                src="https://img.freepik.com/free-photo/person-holding-plant-with-environmental-icons_53876-97887.jpg"
-                alt="Hands holding a plant with soil, surrounded by icons representing nature and technology."
+                src="https://img.freepik.com/free-photo/smart-agriculture-iot-with-hand-planting-tree-background_17121716.jpg"
+                alt="Hand planting a tree with a background of smart agriculture and IoT elements."
                 layout="fill"
                 className="rounded-lg object-cover shadow-2xl"
-                data-ai-hint="environmental technology agriculture"
+                data-ai-hint="smart agriculture IoT"
               />
             </div>
           </div>
