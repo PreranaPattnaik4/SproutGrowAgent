@@ -208,8 +208,10 @@ export function UnifiedAssistant({ isHomepage = false }: UnifiedAssistantProps) 
   };
 
   const cardClass = cn(
-    "mx-auto flex w-full flex-col",
-    isHomepage ? "h-full max-h-[500px] border-none shadow-none" : "h-full max-w-4xl"
+    'mx-auto flex w-full flex-col',
+    isHomepage
+      ? 'h-full max-h-[500px] rounded-2xl border bg-background/30 shadow-lg backdrop-blur-xl'
+      : 'h-full max-w-4xl'
   );
   
   const cardContentClass = cn(
@@ -313,7 +315,7 @@ export function UnifiedAssistant({ isHomepage = false }: UnifiedAssistantProps) 
             )}
           </div>
         </ScrollArea>
-        <div className={cn("border-t border-primary/10 bg-transparent p-4", isHomepage ? "border-none" : "")}>
+        <div className={cn("border-t border-primary/10 bg-transparent p-4", isHomepage ? "bg-transparent border-t-0" : "")}>
           {!isSpeechSupported && (
              <Alert variant="destructive" className="mb-4">
               <AlertTitle>Browser Not Supported</AlertTitle>
