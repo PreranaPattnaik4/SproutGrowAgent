@@ -10,7 +10,7 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
-export const GenerateDetailedCropPlanInputSchema = z.object({
+const GenerateDetailedCropPlanInputSchema = z.object({
   soilImageUri: z.string().optional().describe(
       "A photo of the soil, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
     ),
@@ -19,7 +19,7 @@ export const GenerateDetailedCropPlanInputSchema = z.object({
 });
 export type GenerateDetailedCropPlanInput = z.infer<typeof GenerateDetailedCropPlanInputSchema>;
 
-export const GenerateDetailedCropPlanOutputSchema = z.object({
+const GenerateDetailedCropPlanOutputSchema = z.object({
     recommendation: z.string().describe("The primary crop recommended for the given conditions."),
     plan: z.string().describe("A concise, step-by-step plan for cultivating the recommended crop in Markdown format."),
     tips: z.string().describe("Additional tips for maximizing yield and ensuring a healthy crop in Markdown format."),
