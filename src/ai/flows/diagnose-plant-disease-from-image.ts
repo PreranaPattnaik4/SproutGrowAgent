@@ -20,7 +20,7 @@ const DiagnosePlantDiseaseFromImageInputSchema = z.object({
 export type DiagnosePlantDiseaseFromImageInput = z.infer<typeof DiagnosePlantDiseaseFromImageInputSchema>;
 
 const DiagnosePlantDiseaseFromImageOutputSchema = z.object({
-  diagnosis: z.string().describe('The diagnosis of potential diseases based on the image.'),
+  diagnosis: z.string().describe('The diagnosis of potential diseases based on the image in Markdown format.'),
 });
 export type DiagnosePlantDiseaseFromImageOutput = z.infer<typeof DiagnosePlantDiseaseFromImageOutputSchema>;
 
@@ -39,9 +39,9 @@ Instructions:
 2.  **Identify Potential Diseases/Pests:** Based on your analysis, identify the most likely disease(s) or pest(s) affecting the plant.
 3.  **Provide a Diagnosis:** Clearly state your diagnosis. If multiple issues are present, list them all. If you cannot confidently identify a specific disease, state that and describe the observed symptoms in detail.
 4.  **Describe Key Symptoms:** For each identified issue, briefly describe the characteristic symptoms visible in the image that led to your diagnosis.
-5.  **Suggest Initial Actions (Optional but Recommended):** Briefly suggest general, initial steps a farmer might take to manage the identified problem. This should be high-level advice, such as "isolate the plant," "apply a specific type of fungicide," or "improve air circulation."
+5.  **Suggest Initial Actions:** Briefly suggest general, initial steps a farmer might take to manage the identified problem. This should be high-level advice, such as "isolate the plant," "apply a specific type of fungicide," or "improve air circulation."
 
-Output Format:
+Output Format (use Markdown):
 **Diagnosis:** [Identified Disease/Pest Name(s)]
 
 **Key Symptoms Observed:**

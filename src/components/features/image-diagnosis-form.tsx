@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { Upload, Loader2, Microscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { answerTextQueryWithChatHistory } from '@/ai/flows/answer-text-query-with-chat-history';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { diagnosePlantDiseaseFromImage } from '@/ai/flows/diagnose-plant-disease-from-image';
 import { useI18n } from '@/hooks/use-i18n';
 
 export function ImageDiagnosisForm() {
@@ -19,7 +19,7 @@ export function ImageDiagnosisForm() {
 
   const defaultImage = 'https://picsum.photos/seed/plant-leaf/600/400';
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -30,15 +30,13 @@ export function ImageDiagnosisForm() {
         setError(null);
         setIsLoading(true);
         try {
-          const result = await answerTextQueryWithChatHistory({
-            query: 'Diagnose the disease in this plant leaf image.',
+          const result = await diagnosePlantDiseaseFromImage({
             photoDataUri: dataUri,
-            chatHistory: [],
           });
-          setDiagnosis(result.response);
+          setDiagnosis(result.diagnosis);
         } catch (err) {
-          setError('Failed to get diagnosis. Please try again.');
           console.error(err);
+          setError('Failed to get diagnosis. Please try again.');
         } finally {
           setIsLoading(false);
         }
@@ -93,9 +91,10 @@ export function ImageDiagnosisForm() {
                 {isLoading ? t.imageUploading : t.imageUploadButton}
               </Button>
               {error && (
-                <Alert variant="destructive">
-                  <AlertDescription>{error}</AlertDescription>
-                </Alert>
+                 <Alert variant="destructive">
+                    <AlertTitle>Error</AlertTitle>
+                    <AlertDescription>{error}</AlertDescription>
+                 </Alert>
               )}
             </div>
           </div>
@@ -111,12 +110,14 @@ export function ImageDiagnosisForm() {
           </CardHeader>
           <CardContent>
             {isLoading && !diagnosis ? (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 text-muted-foreground">
                 <Loader2 className="h-5 w-5 animate-spin" />
                 <p>Analyzing... please wait.</p>
               </div>
             ) : (
-              <p className="font-body whitespace-pre-wrap">{diagnosis}</p>
+              <div className="font-body whitespace-pre-wrap prose prose-sm max-w-none">
+                {diagnosis}
+              </div>
             )}
           </CardContent>
         </Card>
@@ -124,5 +125,3 @@ export function ImageDiagnosisForm() {
     </div>
   );
 }
-
-    
