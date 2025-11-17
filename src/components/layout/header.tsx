@@ -67,7 +67,7 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden">
+        <div className="flex w-1/3 justify-start md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -101,7 +101,11 @@ export function Header() {
           </Sheet>
         </div>
         
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <div className="flex w-1/3 justify-center md:hidden">
+          <Logo />
+        </div>
+
+        <div className="flex w-1/3 items-center justify-end space-x-2 md:flex-1 md:w-auto md:justify-end">
           <div className="w-full flex-1 md:w-auto md:flex-none">
             {/* You can add a search bar here if needed */}
           </div>
@@ -122,14 +126,10 @@ export function Header() {
             ))}
              <AuthDialog />
           </nav>
+          <div className="md:hidden">
+            <AuthDialog />
+          </div>
         </div>
-         <div className="md:hidden flex-1 flex justify-center">
-            <Logo />
-        </div>
-         <div className="md:hidden" style={{width: '56px'}}>
-          <AuthDialog />
-         </div>
-
       </div>
     </header>
   );
