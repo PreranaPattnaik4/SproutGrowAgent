@@ -29,6 +29,12 @@
       "description": "An aerial view of green farmlands with a soft focus.",
       "imageUrl": "https://images.unsplash.com/photo-1558242766-3baa58302556?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmYXJtJTIwYWVyaWFsfGVufDB8fHx8MTc2MzIwMDg2OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farm aerial"
+    },
+    {
+      "id": "hero-smart-farming",
+      "description": "Farmer using a tablet in a field, representing smart agriculture technology.",
+      "imageUrl": "https://images.unsplash.com/photo-1621926226493-4a50b3d333b4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNtYXJ0JTIwZmFybWluZ3xlbnwwfHwwfHx8MA%3D%3D",
+      "imageHint": "smart farming"
     }
   ]
 }

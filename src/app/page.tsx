@@ -15,8 +15,11 @@ import {
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { LocationBar } from '@/components/features/location-bar';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 export default function Home() {
+  const heroImage = placeholderImages.placeholderImages.find(p => p.id === 'hero-smart-farming');
+  
   const trustedByItems = [
     {
       name: 'Voice-First Assistant',
@@ -84,13 +87,15 @@ export default function Home() {
               </p>
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
-              <Image
-                src="https://images.unsplash.com/photo-1621926226493-4a50b3d333b4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNtYXJ0JTIwZmFybWluZ3xlbnwwfHwwfHx8MA%3D%3D"
-                alt="Farmer using a tablet in a field, representing smart agriculture technology."
-                layout="fill"
-                className="rounded-lg object-cover shadow-2xl"
-                data-ai-hint="smart farming"
-              />
+              {heroImage && (
+                <Image
+                  src={heroImage.imageUrl}
+                  alt={heroImage.description}
+                  fill
+                  className="rounded-lg object-cover shadow-2xl"
+                  data-ai-hint={heroImage.imageHint}
+                />
+              )}
             </div>
           </div>
         </section>
@@ -181,7 +186,7 @@ export default function Home() {
                 <Image
                   src="https://picsum.photos/seed/agronomist-tablet/600/400"
                   alt="An agronomist inspecting a rice paddy with a tablet computer."
-                  layout="fill"
+                  fill
                   className="rounded-lg object-cover shadow-md"
                   data-ai-hint="agronomist tablet"
                 />
@@ -190,7 +195,7 @@ export default function Home() {
                 <Image
                   src="https://picsum.photos/seed/hand-seedling/600/400"
                   alt="A pair of hands carefully holding a young plant seedling in a handful of soil."
-                  layout="fill"
+                  fill
                   className="rounded-lg object-cover shadow-md"
                   data-ai-hint="hand seedling"
                 />
