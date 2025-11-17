@@ -43,7 +43,7 @@ type FormData = z.infer<typeof FormSchema>;
 const renderMarkdown = (markdown: string) => {
   if (!markdown) return null;
   
-  return markdown.split('\n').map((line, index) => {
+  return markdown.split('\n').filter(line => line.trim().startsWith('-')).map((line, index) => {
     const trimmedLine = line.replace(/^- /, '').trim();
     if (!trimmedLine) return null;
 
@@ -103,9 +103,13 @@ export function DetailedCropPlanner() {
         soilImageUri: soilImageDataUri || undefined,
       });
       setPlan(result);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to generate crop plan:', err);
-      setError('Could not generate the crop plan. Please try again later.');
+      if (err.message?.includes('503')) {
+        setError('The AI service is currently overloaded. Please try again in a few moments.');
+      } else {
+        setError('Could not generate the crop plan. Please check your connection and try again.');
+      }
     } finally {
       setIsLoading(false);
     }
