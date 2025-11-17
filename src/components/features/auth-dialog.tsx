@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Loader2, LogIn } from 'lucide-react';
+import { Loader2, LogIn, ArrowRight } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 
 export function AuthDialog() {
@@ -67,8 +67,8 @@ export function AuthDialog() {
   return (
     <Dialog onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="border-primary/50 text-primary hover:bg-primary/10">
-          <LogIn className="mr-2 h-4 w-4" />
+        <Button variant="default">
+          <ArrowRight className="mr-2 h-4 w-4" />
           Sign Up / Sign In
         </Button>
       </DialogTrigger>

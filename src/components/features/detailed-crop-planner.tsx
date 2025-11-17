@@ -42,30 +42,25 @@ type FormData = z.infer<typeof FormSchema>;
 
 const renderMarkdown = (markdown: string) => {
   if (!markdown) return null;
-  const lines = markdown.split('\n');
+  
+  return markdown.split('\n').map((line, index) => {
+    const trimmedLine = line.replace(/^- /, '').trim();
+    if (!trimmedLine) return null;
 
-  return (
-    <ul className="space-y-1 list-none">
-      {lines.map((line, index) => {
-        const trimmedLine = line.replace(/^- /, '').trim();
-        if (!trimmedLine) return null;
-        
-        // Handle bold text like **Land Preparation:**
-        const parts = trimmedLine.split(/\*\*(.*?)\*\*/g);
+    // Handle bold text like **Land Preparation:**
+    const parts = trimmedLine.split(/\*\*(.*?)\*\*/g);
 
-        return (
-          <li key={index} className="flex items-start gap-2">
-            <span className="mt-1 text-primary">&#8226;</span>
-            <span>
-              {parts.map((part, i) =>
-                i % 2 === 1 ? <strong key={i}>{part}</strong> : part
-              )}
-            </span>
-          </li>
-        );
-      })}
-    </ul>
-  );
+    return (
+      <li key={index} className="flex items-start gap-2">
+        <span className="mt-1 text-primary">&#8226;</span>
+        <p>
+          {parts.map((part, i) =>
+            i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+          )}
+        </p>
+      </li>
+    );
+  });
 };
 
 
@@ -79,6 +74,9 @@ export function DetailedCropPlanner() {
 
   const form = useForm<FormData>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      location: 'Bengaluru',
+    }
   });
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -173,11 +171,14 @@ ${plan.tips}
                       className="h-full w-full rounded-md object-cover"
                     />
                   ) : (
-                    <div className="text-center text-muted-foreground">
-                      <Upload className="mx-auto mb-2 h-8 w-8" />
-                      <p>Click to upload an image</p>
-                      <p className="text-xs">PNG, JPG up to 10MB</p>
-                    </div>
+                    <Image
+                       src="https://picsum.photos/seed/soil-ground/400/400"
+                       alt="Soil with young plants"
+                       width={400}
+                       height={400}
+                       className="h-full w-full rounded-md object-cover"
+                       data-ai-hint="soil ground"
+                    />
                   )}
                 </div>
                 <input
@@ -197,7 +198,7 @@ ${plan.tips}
                     <Input
                       id="location"
                       {...form.register('location')}
-                      placeholder="e.g., Nagpur, Maharashtra"
+                      placeholder="e.g., Bengaluru"
                       className="pl-10"
                       disabled={isLoading}
                     />
@@ -223,7 +224,7 @@ ${plan.tips}
                               disabled={isLoading}
                             >
                               <CalendarIcon className="mr-2 h-4 w-4" />
-                              {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                              {field.value ? format(field.value, "PPP") : <span>November 17th, 2025</span>}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0">
@@ -244,7 +245,7 @@ ${plan.tips}
               </div>
             </div>
 
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -298,14 +299,14 @@ ${plan.tips}
               <h3 className="flex items-center gap-2 font-headline text-lg font-semibold">
                 <ListOrdered /> Planting Plan
               </h3>
-              <div className="prose prose-sm max-w-none text-muted-foreground">{renderMarkdown(plan.plan)}</div>
+              <ul className="prose prose-sm max-w-none list-none space-y-1 text-muted-foreground">{renderMarkdown(plan.plan)}</ul>
             </div>
 
             <div className="space-y-2">
               <h3 className="flex items-center gap-2 font-headline text-lg font-semibold">
                 <Sparkles /> Additional Tips
               </h3>
-              <div className="prose prose-sm max-w-none text-muted-foreground">{renderMarkdown(plan.tips)}</div>
+              <ul className="prose prose-sm max-w-none list-none space-y-1 text-muted-foreground">{renderMarkdown(plan.tips)}</ul>
             </div>
           </CardContent>
         </Card>
