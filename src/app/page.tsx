@@ -16,10 +16,9 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { LocationBar } from '@/components/features/location-bar';
 import placeholderImages from '@/lib/placeholder-images.json';
+import { UnifiedAssistant } from '@/components/features/unified-assistant';
 
 export default function Home() {
-  const heroImage = placeholderImages.placeholderImages.find(p => p.id === 'hero-smart-farming');
-  
   const trustedByItems = [
     {
       name: 'Voice-First Assistant',
@@ -86,16 +85,8 @@ export default function Home() {
                 Instant crop disease diagnosis, voice assistance, and localized market data to empower your farming.
               </p>
             </div>
-            <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
-              {heroImage && (
-                <Image
-                  src={heroImage.imageUrl}
-                  alt={heroImage.description}
-                  fill
-                  className="rounded-lg object-cover shadow-2xl"
-                  data-ai-hint={heroImage.imageHint}
-                />
-              )}
+            <div className="h-full min-h-[400px] w-full max-w-lg">
+                <UnifiedAssistant isHomepage={true} />
             </div>
           </div>
         </section>

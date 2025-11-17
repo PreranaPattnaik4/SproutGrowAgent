@@ -31,7 +31,11 @@ interface Message {
   image?: string;
 }
 
-export function UnifiedAssistant() {
+interface UnifiedAssistantProps {
+  isHomepage?: boolean;
+}
+
+export function UnifiedAssistant({ isHomepage = false }: UnifiedAssistantProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -203,35 +207,47 @@ export function UnifiedAssistant() {
     }
   };
 
+  const cardClass = cn(
+    "mx-auto flex w-full flex-col",
+    isHomepage ? "h-full max-h-[500px] border-none shadow-none" : "h-full max-w-4xl"
+  );
+  
+  const cardContentClass = cn(
+    "flex flex-1 flex-col overflow-hidden",
+    isHomepage ? "p-0" : ""
+  );
+
   return (
-    <Card className="mx-auto flex h-full max-w-4xl flex-col">
-      <CardHeader>
-        <CardTitle className="flex items-center justify-between font-headline">
-          AI Assistant
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={downloadConversation}
-              disabled={messages.length === 0}
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={shareOnWhatsApp}
-              disabled={!messages.some((m) => m.role === 'assistant')}
-              className="bg-green-500 text-white hover:bg-green-600"
-            >
-              <Share2 className="mr-2 h-4 w-4" />
-              Share
-            </Button>
-          </div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex flex-1 flex-col overflow-hidden p-0">
+    <Card className={cardClass}>
+      {!isHomepage && (
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between font-headline">
+            AI Assistant
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={downloadConversation}
+                disabled={messages.length === 0}
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={shareOnWhatsApp}
+                disabled={!messages.some((m) => m.role === 'assistant')}
+                className="bg-green-500 text-white hover:bg-green-600"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                Share
+              </Button>
+            </div>
+          </CardTitle>
+        </CardHeader>
+      )}
+      <CardContent className={cardContentClass}>
         <ScrollArea className="flex-1 p-4">
           <div className="space-y-4">
             {messages.length === 0 && !isLoading && (
@@ -297,7 +313,7 @@ export function UnifiedAssistant() {
             )}
           </div>
         </ScrollArea>
-        <div className="border-t border-primary/10 bg-transparent p-4">
+        <div className={cn("border-t border-primary/10 bg-transparent p-4", isHomepage ? "border-none" : "")}>
           {!isSpeechSupported && (
              <Alert variant="destructive" className="mb-4">
               <AlertTitle>Browser Not Supported</AlertTitle>
