@@ -36,6 +36,7 @@ export default function RootLayout({
         <I18nProvider>
           <Header />
           <main>{children}</main>
+          <ChatbotPopup />
           <Toaster />
         </I18nProvider>
       </body>
