@@ -85,11 +85,11 @@ export default function Home() {
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
               <Image
-                src="https://picsum.photos/seed/hero-image/600/400"
-                alt="A pair of hands holding a young plant seedling in a handful of soil, with digital data overlays indicating growth metrics."
+                src="https://img.freepik.com/free-photo/glowing-plant-growing-futuristic-automated-greenhouse_188544-29009.jpg"
+                alt="A plant growing inside a protective, glowing glass bubble in a futuristic greenhouse, symbolizing AI-powered agriculture technology."
                 layout="fill"
                 className="rounded-lg object-cover shadow-2xl"
-                data-ai-hint="plant growth data"
+                data-ai-hint="futuristic agriculture"
               />
             </div>
           </div>
