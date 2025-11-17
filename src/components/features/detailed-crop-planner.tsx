@@ -47,7 +47,6 @@ const renderMarkdown = (markdown: string) => {
     const trimmedLine = line.replace(/^- /, '').trim();
     if (!trimmedLine) return null;
 
-    // Handle bold text like **Land Preparation:**
     const parts = trimmedLine.split(/\*\*(.*?)\*\*/g);
 
     return (
@@ -160,29 +159,24 @@ ${plan.tips}
         <CardContent>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="space-y-2">
+               <div className="space-y-2">
                 <label className="font-medium">Soil Image (Optional)</label>
                 <div
-                  className="flex h-48 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-muted/50 hover:bg-muted/75"
+                  className="relative flex h-48 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-muted/50 transition-colors hover:bg-muted/75"
                   onClick={() => fileInputRef.current?.click()}
                 >
                   {soilImagePreview ? (
                     <Image
                       src={soilImagePreview}
                       alt="Soil preview"
-                      width={400}
-                      height={400}
-                      className="h-full w-full rounded-md object-cover"
+                      fill
+                      className="rounded-md object-cover"
                     />
                   ) : (
-                    <Image
-                       src="https://picsum.photos/seed/soil-ground/400/400"
-                       alt="Soil with young plants"
-                       width={400}
-                       height={400}
-                       className="h-full w-full rounded-md object-cover"
-                       data-ai-hint="soil ground"
-                    />
+                    <div className="text-center text-muted-foreground">
+                       <Upload className="mx-auto h-8 w-8" />
+                       <p className="mt-2 text-sm">Click to upload soil image</p>
+                    </div>
                   )}
                 </div>
                 <input
@@ -191,6 +185,7 @@ ${plan.tips}
                   onChange={handleImageChange}
                   accept="image/*"
                   className="hidden"
+                  disabled={isLoading}
                 />
               </div>
 
@@ -246,19 +241,18 @@ ${plan.tips}
                     <p className="text-xs text-destructive">{form.formState.errors.date.message}</p>
                   )}
                 </div>
+                 <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Generating Plan...
+                      </>
+                    ) : (
+                      'Generate Crop Plan'
+                    )}
+                  </Button>
               </div>
             </div>
-
-            <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Generating Plan...
-                </>
-              ) : (
-                'Generate Crop Plan'
-              )}
-            </Button>
           </form>
         </CardContent>
       </Card>
@@ -268,6 +262,19 @@ ${plan.tips}
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
+      )}
+
+      {isLoading && (
+         <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 font-headline text-2xl">
+              <Loader2 className="h-6 w-6 animate-spin" /> Generating Your Plan...
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">Our AI is analyzing your data. Please wait a moment.</p>
+          </CardContent>
+        </Card>
       )}
 
       {plan && (
