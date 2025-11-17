@@ -32,7 +32,26 @@ const prompt = ai.definePrompt({
   name: 'diagnosePlantDiseaseFromImagePrompt',
   input: {schema: DiagnosePlantDiseaseFromImageInputSchema},
   output: {schema: DiagnosePlantDiseaseFromImageOutputSchema},
-  prompt: `You are an expert plant pathologist. Analyze the image of the plant leaf and provide a diagnosis of potential diseases. Be as specific as possible.
+  prompt: `You are an expert agricultural botanist and plant pathologist. Your task is to analyze an uploaded image of a plant leaf and provide a precise diagnosis of any visible diseases or pests.
+
+Instructions:
+1.  **Analyze the Image Thoroughly:** Examine the plant leaf in the image for any discoloration, spots, lesions, deformities, wilting, or signs of pest infestation. Pay close attention to texture, color patterns, and the distribution of symptoms.
+2.  **Identify Potential Diseases/Pests:** Based on your analysis, identify the most likely disease(s) or pest(s) affecting the plant.
+3.  **Provide a Diagnosis:** Clearly state your diagnosis. If multiple issues are present, list them all. If you cannot confidently identify a specific disease, state that and describe the observed symptoms in detail.
+4.  **Describe Key Symptoms:** For each identified issue, briefly describe the characteristic symptoms visible in the image that led to your diagnosis.
+5.  **Suggest Initial Actions (Optional but Recommended):** Briefly suggest general, initial steps a farmer might take to manage the identified problem. This should be high-level advice, such as "isolate the plant," "apply a specific type of fungicide," or "improve air circulation."
+
+Output Format:
+**Diagnosis:** [Identified Disease/Pest Name(s)]
+
+**Key Symptoms Observed:**
+- [Symptom 1 related to Diagnosis 1]
+- [Symptom 2 related to Diagnosis 1]
+- [Symptom 1 related to Diagnosis 2, if applicable]
+
+**Recommended Initial Actions:**
+- [Action 1]
+- [Action 2]
 
 Image: {{media url=photoDataUri}}`,
 });
