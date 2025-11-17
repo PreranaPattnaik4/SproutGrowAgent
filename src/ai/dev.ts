@@ -6,4 +6,4 @@ import '@/ai/flows/answer-voice-query-with-integrated-info.ts';
 import '@/ai/flows/diagnose-plant-disease-from-image.ts';
 import '@/ai/flows/generate-crop-plan.ts';
 import '@/ai/flows/coordinator-flow.ts';
-import '@/ai/flows/get-location-based-advice.ts';
+import '@/ai/flows/get-local-info.ts';
