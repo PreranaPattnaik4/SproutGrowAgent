@@ -85,7 +85,7 @@ export default function Home() {
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
               <Image
-                src="https://img.freepik.com/free-photo/smart-agriculture-iot-with-hand-planting-tree-background_17121716.htm"
+                src="https://picsum.photos/seed/hero-image/600/400"
                 alt="A pair of hands holding a young plant seedling in a handful of soil, with digital data overlays indicating growth metrics."
                 layout="fill"
                 className="rounded-lg object-cover shadow-2xl"
@@ -179,7 +179,7 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="relative h-64 w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1709141105470-f4baad5ee8be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWdyb25vbWlzdCUyMHRhYmxldHxlbnwwfHx8fDE3NjMyMDA4Njl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="https://picsum.photos/seed/agronomist-tablet/600/400"
                   alt="An agronomist inspecting a rice paddy with a tablet computer."
                   layout="fill"
                   className="rounded-lg object-cover shadow-md"
@@ -188,7 +188,7 @@ export default function Home() {
               </div>
               <div className="relative h-64 w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1746728153970-aebb6434fa8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoYW5kJTIwc2VlZGxpbmd8ZW58MHx8fHwxNzYzMjAwODY5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="https://picsum.photos/seed/hand-seedling/600/400"
                   alt="A pair of hands carefully holding a young plant seedling in a handful of soil."
                   layout="fill"
                   className="rounded-lg object-cover shadow-md"
@@ -228,3 +228,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

@@ -8,7 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { answerTextQueryWithChatHistory } from '@/ai/flows/answer-text-query-with-chat-history';
 import { useI18n } from '@/hooks/use-i18n';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function ImageDiagnosisForm() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -18,7 +17,7 @@ export function ImageDiagnosisForm() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { t } = useI18n();
 
-  const defaultImage = PlaceHolderImages.find((p) => p.id === 'plant-leaf');
+  const defaultImage = 'https://picsum.photos/seed/plant-leaf/600/400';
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -65,16 +64,12 @@ export function ImageDiagnosisForm() {
           <div className="flex flex-col items-center gap-6 sm:flex-row">
             <div className="flex h-64 w-full items-center justify-center rounded-lg border-2 border-dashed bg-muted/50 sm:w-1/2">
               <Image
-                src={
-                  imagePreview ||
-                  defaultImage?.imageUrl ||
-                  'https://picsum.photos/seed/leaf/600/400'
-                }
+                src={imagePreview || defaultImage}
                 alt="Plant leaf"
                 width={600}
                 height={400}
                 className="max-h-full max-w-full rounded-md object-contain"
-                data-ai-hint={defaultImage?.imageHint}
+                data-ai-hint="plant leaf"
               />
             </div>
             <div className="w-full space-y-4 sm:w-1/2">
@@ -129,3 +124,5 @@ export function ImageDiagnosisForm() {
     </div>
   );
 }
+
+    
