@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import { I18nProvider } from '@/providers/i18n-provider';
 import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -29,12 +30,13 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="font-body antialiased bg-background"
+        className="font-body antialiased bg-background flex flex-col min-h-screen"
         suppressHydrationWarning
       >
         <I18nProvider>
           <Header />
-          <main>{children}</main>
+          <main className="flex-1">{children}</main>
+          <Footer />
           <Toaster />
         </I18nProvider>
       </body>
