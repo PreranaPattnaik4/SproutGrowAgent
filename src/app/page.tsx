@@ -85,11 +85,11 @@ export default function Home() {
             </div>
             <div className="relative mx-auto h-64 w-full max-w-lg md:h-80">
               <Image
-                src="https://img.freepik.com/free-photo/smart-agriculture-iot-with-hand-planting-tree-background_17121716.jpg"
-                alt="Hand planting a tree with a background of smart agriculture and IoT elements."
+                src="https://images.unsplash.com/photo-1620912189862-c89d07357859?q=80&w=2070&auto=format&fit=crop"
+                alt="Farmer using a tablet in a field with smart agriculture icons."
                 layout="fill"
                 className="rounded-lg object-cover shadow-2xl"
-                data-ai-hint="smart agriculture IoT"
+                data-ai-hint="smart agriculture tablet"
               />
             </div>
           </div>
