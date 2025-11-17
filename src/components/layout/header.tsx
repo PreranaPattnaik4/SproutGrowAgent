@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   Bot,
+  CalendarDays,
 } from 'lucide-react';
 import { useI18n } from '@/hooks/use-i18n';
 import { cn } from '@/lib/utils';
@@ -35,6 +36,7 @@ export function Header() {
     { href: '/', label: t.navHome, icon: Home },
     { href: '/image-diagnosis', label: t.navImageDiagnosis, icon: ImageIcon },
     { href: '/ai-assistant', label: t.navAiAssistant, icon: Bot },
+    { href: '/crop-planner', label: 'Crop Planner', icon: CalendarDays },
     { href: '/location-info', label: t.navLocationInfo, icon: MapPin },
     {
       href: '/digital-solutions',
