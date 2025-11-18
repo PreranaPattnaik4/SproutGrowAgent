@@ -20,6 +20,7 @@ import {
   answerTextQueryWithChatHistory,
   type AnswerTextQueryWithChatHistoryInput,
 } from '@/ai/flows/answer-text-query-with-chat-history';
+import { textToSpeech } from '@/ai/flows/text-to-speech';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
@@ -41,6 +42,7 @@ export function UnifiedAssistant({ isHomepage = false }: UnifiedAssistantProps) 
   const [isLoading, setIsLoading] = useState(false);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isListening, setIsListening] = useState(false);
   const [wasVoiceInput, setWasVoiceInput] = useState(false);
   const [isSpeechSupported, setIsSpeechSupported] = useState(false);
@@ -123,8 +125,14 @@ export function UnifiedAssistant({ isHomepage = false }: UnifiedAssistantProps) 
       setMessages((prev) => [...prev, assistantMessage]);
 
       if (wasVoiceInput) {
-        const utterance = new SpeechSynthesisUtterance(result.response);
-        window.speechSynthesis.speak(utterance);
+        const ttsResult = await textToSpeech({ text: result.response });
+        if (ttsResult.audioDataUri) {
+          if (!audioRef.current) {
+            audioRef.current = new Audio();
+          }
+          audioRef.current.src = ttsResult.audioDataUri;
+          audioRef.current.play();
+        }
         setWasVoiceInput(false); // Reset after speaking
       }
     } catch (error) {

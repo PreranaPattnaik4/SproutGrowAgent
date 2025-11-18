@@ -9,3 +9,4 @@ import '@/ai/flows/generate-crop-plan.ts';
 import '@/ai/flows/coordinator-flow.ts';
 import '@/ai/flows/get-local-info.ts';
 import '@/ai/flows/generate-detailed-crop-plan.ts';
+import '@/ai/flows/text-to-speech.ts';
