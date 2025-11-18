@@ -13,7 +13,6 @@ SproutGrow Agent is built with a modern, server-centric architecture that levera
 ### Architectural Diagram
 
 
-
 ### Component Breakdown
 
 -   **Client-Side (User's Browser):**
@@ -28,13 +27,13 @@ SproutGrow Agent is built with a modern, server-centric architecture that levera
 
 -   **AI Backend (Genkit Flows):**
     -   All AI logic is encapsulated within **Genkit flows**, which are TypeScript functions that run on the server. This is the core of our AI backend.
-    -   These flows are defined in the `src/ai/flows/` directory. Each flow is responsible for a specific task (e.g., diagnosing a plant disease, generating a crop plan).
+    -   These flows are defined in the `src/ai/flows/` directory. Each flow is responsible for a specific task (e.g., diagnosing a plant disease, generating a crop plan, or converting text to speech).
     -   **Zod** is used to define strong schemas for the inputs and outputs of each flow, ensuring data integrity.
     -   Within a flow, we define prompts for the Gemini models, process input data (like converting an image to a data URI), and call the Google AI API through the Genkit framework.
     -   Because all AI interactions happen within these server-side flows, API keys and other sensitive information are never exposed to the client.
 
 -   **Google AI Platform:**
-    -   This is the external service that hosts and runs the powerful **Gemini models**.
+    -   This is the external service that hosts and runs the powerful **Gemini models** (including vision, text, and TTS models).
     -   Genkit abstracts away the complexity of making API calls to this platform, allowing us to simply call our defined prompts and receive structured output.
 
 This architecture ensures that the application is both powerful and secure. The frontend remains lightweight and responsive, while the heavy lifting of AI processing is handled by a robust, server-side backend.
@@ -54,10 +53,11 @@ This architecture ensures that the application is both powerful and secure. The 
 
 ### 3.2. Backend (AI) Technologies
 - **AI Framework:** Genkit, an open-source framework from Google, is used to build, manage, and monitor the application's AI capabilities.
-- **AI Models:** The application leverages Google's Gemini family of models (including `gemini-2.5-flash` for vision and text) for all generative AI tasks.
+- **AI Models:** The application leverages Google's Gemini family of models (including `gemini-2.5-flash` for vision/text and `gemini-2.5-flash-preview-tts` for speech) for all generative AI tasks.
 - **Server-Side Logic:** Genkit flows, written in TypeScript and marked with `'use server'`, run on the server side to securely handle AI model interactions and data processing.
 - **Data Validation:** Zod is used extensively to define schemas for the inputs and outputs of the Genkit flows, ensuring type safety and data integrity between the client and the AI backend.
-- **Deployment:** The application is configured for deployment on Render, a serverless platform optimized for modern web apps.
+- **Audio Processing:** The `wav` library is used to process and format the audio output from the Text-to-Speech model.
+- **Deployment:** The application is configured for deployment on Firebase App Hosting, which uses Google Cloud Run for a serverless, scalable infrastructure.
 
 ## 4. Implemented Features
 
@@ -68,8 +68,10 @@ This architecture ensures that the application is both powerful and secure. The 
 
 ### 4.2. Unified AI Assistant
 - **Files:** `src/app/ai-assistant/page.tsx`, `src/components/features/unified-assistant.tsx`
-- **AI Flow:** `src/ai/flows/answer-text-query-with-chat-history.ts`
-- **Description:** A comprehensive, multi-modal assistant that supports interaction via text, voice, and image uploads. The AI maintains chat history to provide contextual follow-up answers. It also includes features to download the conversation history and share the latest AI response on WhatsApp.
+- **AI Flows:** 
+    - `src/ai/flows/answer-text-query-with-chat-history.ts`
+    - `src/ai/flows/text-to-speech.ts`
+- **Description:** A comprehensive, multi-modal assistant that supports interaction via text, voice, and image uploads. The AI maintains chat history to provide contextual follow-up answers and delivers spoken responses for voice queries.
 
 ### 4.3. AI Crop Planner
 - **Files:** `src/app/crop-planner/page.tsx`, `src/components/features/detailed-crop-planner.tsx`
